@@ -1,0 +1,21 @@
+{
+    "name": "animaeris/website",
+    "type": "project",
+    "require": {
+        "php": ">=8.5",
+        "symfony/dotenv": "^8.0",
+        "symfony/framework-bundle": "^8.0",
+        "symfony/runtime": "*",
+        "symfony/string": "^8.0",
+        "symfony/twig-bundle": "^8.0",
+        "symfony/yaml": "^8.0",
+        "twig/twig": "^3.26"
+    },
+    "autoload": {
+        "psr-4": { "App\\": "src/" }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "allow-plugins": { "symfony/runtime": true }
+    }
+}

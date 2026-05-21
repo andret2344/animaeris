@@ -1,0 +1,11 @@
+/dataSources/
+/httpRequests/
+/queries/
+/shelf/
+
+/dataSources.local.xml
+/misc.xml
+/modules.xml
+/php.xml
+/symfony2.xml
+/workspace.xml

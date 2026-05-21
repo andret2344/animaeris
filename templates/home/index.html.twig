@@ -1,0 +1,389 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+{# ===== HERO ===== #}
+<section class="hero" id="hero">
+    <div class="hero-bg">
+        <img src="https://images.pexels.com/photos/3757954/pexels-photo-3757954.jpeg?auto=compress&cs=tinysrgb&w=1920&q=80" alt="Aerial arts" class="hero-img" loading="eager">
+        <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+        <div class="hero-inner" data-ani="up">
+            <span class="eyebrow">Studio Aerial & Wellness</span>
+            <h1 class="hero-title">Odkryj<br><em>swoją siłę</em><br>i piękno</h1>
+            <p class="hero-sub">Eleganckie studio aerial arts stworzone dla kobiet, które chcą czuć się silne, sprawne i piękne.</p>
+            <div class="hero-btns">
+                <a href="#kontakt" class="btn btn-primary">Zapisz się na zajęcia</a>
+                <a href="#o-studiu" class="btn btn-ghost">Poznaj nas</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+        <span>Przewiń</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+{# ===== STATS ===== #}
+<section class="stats">
+    <div class="stats-grid">
+        <div class="stat-item" data-ani="up" data-delay="0">
+            <span class="stat-num" data-count="500">500+</span>
+            <span class="stat-label">Zadowolonych uczestniczek</span>
+        </div>
+        <div class="stat-item" data-ani="up" data-delay="100">
+            <span class="stat-num" data-count="12">12</span>
+            <span class="stat-label">Rodzajów zajęć</span>
+        </div>
+        <div class="stat-item" data-ani="up" data-delay="200">
+            <span class="stat-num" data-count="3">3</span>
+            <span class="stat-label">Certyfikowane trenerki</span>
+        </div>
+        <div class="stat-item" data-ani="up" data-delay="300">
+            <span class="stat-num" data-count="5">5+</span>
+            <span class="stat-label">Lat doświadczenia</span>
+        </div>
+    </div>
+</section>
+
+{# ===== O STUDIU ===== #}
+<section class="about" id="o-studiu">
+    <div class="about-grid">
+        <div class="about-media" data-ani="right">
+            <div class="about-imgs">
+                <img src="https://images.pexels.com/photos/8436728/pexels-photo-8436728.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="Aerial hoop w studiu" class="about-main-img" loading="lazy">
+                <img src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Zajęcia wellness" class="about-sec-img" loading="lazy">
+            </div>
+            <div class="about-badge">
+                <span class="badge-year">2019</span>
+                <span class="badge-text">Rok założenia</span>
+            </div>
+        </div>
+        <div class="about-text" data-ani="left">
+            <span class="eyebrow">O Studiu</span>
+            <h2>Miejsce, w którym<br>rodzi się siła</h2>
+            <p>Animaeris to wyjątkowe studio aerial arts i wellness stworzone dla kobiet, które pragną odkryć swoją siłę i piękno. Panuje tu atmosfera wzajemnego wsparcia, akceptacji i radości z ruchu.</p>
+            <p>Wierzymy, że każde ciało jest piękne i zdolne do niesamowitych rzeczy. Nasze zajęcia to nie tylko trening — to doświadczenie, które zmienia sposób, w jaki patrzysz na siebie.</p>
+            <div class="about-features">
+                <div class="feat">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <div><strong>Bezpieczeństwo</strong><span>Certyfikowany sprzęt i przeszkolone trenerki</span></div>
+                </div>
+                <div class="feat">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <div><strong>Kameralne grupy</strong><span>Maksymalnie 8–10 osób na zajęciach</span></div>
+                </div>
+                <div class="feat">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <div><strong>Każdy poziom</strong><span>Od zupełnych początków do zaawansowanych</span></div>
+                </div>
+            </div>
+            <a href="#kontakt" class="btn btn-primary">Dołącz do nas</a>
+        </div>
+    </div>
+</section>
+
+{# ===== CLASSES ===== #}
+<section class="classes" id="zajecia">
+    <div class="section-header" data-ani="up">
+        <span class="eyebrow">Nasze zajęcia</span>
+        <h2>Co oferujemy</h2>
+        <p class="section-desc">Szeroka oferta dla każdego poziomu zaawansowania</p>
+    </div>
+    <div class="classes-grid">
+        <div class="class-card" data-ani="up" data-delay="0">
+            <div class="class-img"><img src="https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Aerial Hoop" loading="lazy"><span class="class-badge premium">PREMIUM</span></div>
+            <div class="class-body"><h3>Aerial Hoop</h3><p>Koło aerialowe — łączy siłę, gibkość i artyzm. Idealne dla tych, kto marzy o efektownych figurach w powietrzu.</p><span class="class-price">od 45 zł</span></div>
+        </div>
+        <div class="class-card" data-ani="up" data-delay="100">
+            <div class="class-img"><img src="https://images.pexels.com/photos/3912516/pexels-photo-3912516.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Aerial Yoga" loading="lazy"><span class="class-badge premium">PREMIUM</span></div>
+            <div class="class-body"><h3>Aerial Yoga</h3><p>Joga w hamaku — odciąża kręgosłup, poprawia elastyczność i daje poczucie lekkości.</p><span class="class-price">od 45 zł</span></div>
+        </div>
+        <div class="class-card" data-ani="up" data-delay="200">
+            <div class="class-img"><img src="https://images.pexels.com/photos/3757376/pexels-photo-3757376.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Flying Pole" loading="lazy"><span class="class-badge premium">PREMIUM</span></div>
+            <div class="class-body"><h3>Flying Pole</h3><p>Pole dance w powietrzu — spektakularny trening siły, zwinności i gracji.</p><span class="class-price">od 45 zł</span></div>
+        </div>
+        <div class="class-card" data-ani="up" data-delay="0">
+            <div class="class-img"><img src="https://images.pexels.com/photos/4325475/pexels-photo-4325475.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Rozciąganie" loading="lazy"><span class="class-badge soft">SOFT</span></div>
+            <div class="class-body"><h3>Rozciąganie</h3><p>Kompleksowe zajęcia rozciągające — poprawiają elastyczność i redukują napięcia.</p><span class="class-price">od 35 zł</span></div>
+        </div>
+        <div class="class-card" data-ani="up" data-delay="100">
+            <div class="class-img"><img src="https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Cardio Dance" loading="lazy"><span class="class-badge soft">SOFT</span></div>
+            <div class="class-body"><h3>Cardio Dance</h3><p>Energiczne zajęcia taneczno-cardio. Spalisz kalorie i wyjdziesz z uśmiechem.</p><span class="class-price">od 35 zł</span></div>
+        </div>
+        <div class="class-card" data-ani="up" data-delay="200">
+            <div class="class-img"><img src="https://images.pexels.com/photos/3822867/pexels-photo-3822867.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Mobilność" loading="lazy"><span class="class-badge soft">SOFT</span></div>
+            <div class="class-body"><h3>Mobilność & Rollowanie</h3><p>Praca z ciałem skupiona na mobilności stawów i rozluźnieniu powięzi.</p><span class="class-price">od 35 zł</span></div>
+        </div>
+    </div>
+</section>
+
+{# ===== TRAINERS ===== #}
+<section class="trainers" id="trenerzy">
+    <div class="section-header" data-ani="up">
+        <span class="eyebrow">Nasz Zespół</span>
+        <h2>Poznaj trenerki</h2>
+        <p class="section-desc">Pasjonatki, które przeprowadzą Cię przez każdy etap przygody</p>
+    </div>
+    <div class="trainers-grid">
+        {% set trainer_imgs = ['3822622','4056535','3757954'] %}
+        {% for trainer in trainers %}
+        <div class="trainer-card" data-ani="up" data-delay="{{ loop.index0 * 100 }}">
+            <div class="trainer-avatar">
+                <img src="https://images.pexels.com/photos/{{ trainer_imgs[loop.index0] }}/pexels-photo-{{ trainer_imgs[loop.index0] }}.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="{{ trainer.name }}" loading="lazy">
+            </div>
+            <h3>{{ trainer.name }}</h3>
+            <span class="trainer-role">{{ trainer.role }}</span>
+            <p>{{ trainer.desc }}</p>
+            <div class="trainer-tags">
+                {% for tag in trainer.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# ===== SCHEDULE ===== #}
+<section class="schedule" id="grafik">
+    <div class="schedule-wrap">
+        <div class="section-header light" data-ani="up">
+            <span class="eyebrow">Grafik</span>
+            <h2>Harmonogram zajęć</h2>
+            <p class="section-desc">Znajdź termin, który pasuje do Twojego dnia</p>
+        </div>
+        <div class="sched-legend">
+            <span class="leg soft">SOFT</span>
+            <span class="leg premium">PREMIUM</span>
+            <span class="leg open">Open Studio</span>
+        </div>
+        <div class="sched-tabs" role="tablist">
+            {% for day, classes in schedule %}
+            <button class="sched-tab{% if loop.first %} active{% endif %}" role="tab" aria-selected="{{ loop.first ? 'true' : 'false' }}" data-panel="panel-{{ loop.index }}">{{ day }}</button>
+            {% endfor %}
+        </div>
+        {% for day, classes in schedule %}
+        <div class="sched-panel{% if loop.first %} active{% endif %}" id="panel-{{ loop.index }}">
+            {% for c in classes %}
+            <div class="sched-row sched-{{ c.type }}">
+                <span class="sched-time">{{ c.time }}</span>
+                <div class="sched-info">
+                    <strong>{{ c.name }}</strong>
+                    <span>{{ c.duration }} min</span>
+                </div>
+                <span class="sched-badge">{{ c.type == 'soft' ? 'SOFT' : (c.type == 'premium' ? 'PREMIUM' : 'Open') }}</span>
+                <a href="#kontakt" class="sched-book">Zapisz się</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# ===== PRICING ===== #}
+<section class="pricing" id="cennik">
+    <div class="pricing-wrap">
+        <div class="section-header" data-ani="up">
+            <span class="eyebrow">Cennik</span>
+            <h2>Transparentne ceny</h2>
+            <p class="section-desc">Wybierz opcję dopasowaną do Twojego rytmu</p>
+        </div>
+        <div class="pricing-cards">
+            {# SOFT #}
+            <div class="pcard" data-ani="up" data-delay="0">
+                <div class="pcard-head">
+                    <span class="pcard-badge soft">SOFT</span>
+                    <h3>{{ pricing.soft.name }}</h3>
+                    <p>{{ pricing.soft.description }}</p>
+                </div>
+                <div class="pcard-body">
+                    {% for item in pricing.soft.items %}
+                    <div class="pcard-row"><span>{{ item.label }}</span><strong>{{ item.price }}</strong></div>
+                    {% endfor %}
+                </div>
+                <div class="pcard-foot">
+                    <p class="pcard-note">* {{ pricing.soft.note }}</p>
+                    <a href="#kontakt" class="btn btn-outline w-full">Zapisz się</a>
+                </div>
+            </div>
+            {# PREMIUM #}
+            <div class="pcard pcard-featured" data-ani="up" data-delay="150">
+                <div class="pcard-head">
+                    <span class="pcard-badge premium">PREMIUM</span>
+                    <h3>{{ pricing.premium.name }}</h3>
+                    <p>{{ pricing.premium.description }}</p>
+                </div>
+                <div class="pcard-body">
+                    {% for item in pricing.premium.items %}
+                    <div class="pcard-row"><span>{{ item.label }}</span><strong>{{ item.price }}</strong></div>
+                    {% endfor %}
+                </div>
+                <div class="pcard-foot">
+                    <p class="pcard-note">* {{ pricing.premium.note }}</p>
+                    <a href="#kontakt" class="btn btn-primary w-full">Zapisz się</a>
+                </div>
+            </div>
+            {# MEMBERSHIP #}
+            <div class="pcard pcard-member" data-ani="up" data-delay="300">
+                <div class="pcard-head">
+                    <span class="pcard-badge member">CZŁONKOSTWO</span>
+                    <h3>All Inclusive</h3>
+                    <div class="member-price"><span class="mp-amount">650 zł</span><span class="mp-per">/ miesiąc</span></div>
+                </div>
+                <div class="pcard-body">
+                    <div class="pcard-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Nielimitowane wejścia na wszystkie zajęcia</div>
+                    <div class="pcard-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dostęp do Open Studio</div>
+                    <div class="pcard-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Priorytet przy zapisach</div>
+                    <div class="pcard-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Zniżki na wynajem sali</div>
+                </div>
+                <div class="pcard-foot">
+                    <a href="#kontakt" class="btn btn-primary w-full">Zacznij dzisiaj</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-other" data-ani="up">
+            <h3 class="pricing-other-title">Pozostałe opcje</h3>
+            <div class="other-grid">
+                {% for item in pricing.other %}
+                <div class="other-card">
+                    <div><strong>{{ item.name }}</strong><span>{{ item.desc }}</span></div>
+                    <span class="other-price">{{ item.price }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ===== GALLERY ===== #}
+<section class="gallery" id="galeria">
+    <div class="section-header" data-ani="up">
+        <span class="eyebrow">Galeria</span>
+        <h2>Nasza przestrzeń</h2>
+        <p class="section-desc">Zajrzyj do środka, zanim przyjdziesz</p>
+    </div>
+    <div class="gallery-grid">
+        <div class="g-item g-large" data-ani="up" data-delay="0"><img src="https://images.pexels.com/photos/8436728/pexels-photo-8436728.jpeg?auto=compress&cs=tinysrgb&w=900&q=80" alt="Studio" loading="lazy"><div class="g-overlay"></div></div>
+        <div class="g-item" data-ani="up" data-delay="100"><img src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Rozciąganie" loading="lazy"><div class="g-overlay"></div></div>
+        <div class="g-item" data-ani="up" data-delay="150"><img src="https://images.pexels.com/photos/3912516/pexels-photo-3912516.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Aerial Yoga" loading="lazy"><div class="g-overlay"></div></div>
+        <div class="g-item" data-ani="up" data-delay="200"><img src="https://images.pexels.com/photos/3757376/pexels-photo-3757376.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Flying Pole" loading="lazy"><div class="g-overlay"></div></div>
+        <div class="g-item" data-ani="up" data-delay="250"><img src="https://images.pexels.com/photos/4325475/pexels-photo-4325475.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Trening" loading="lazy"><div class="g-overlay"></div></div>
+        <div class="g-item" data-ani="up" data-delay="300"><img src="https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Cardio Dance" loading="lazy"><div class="g-overlay"></div></div>
+    </div>
+</section>
+
+{# ===== FAQ ===== #}
+<section class="faq" id="faq">
+    <div class="faq-wrap">
+        <div class="section-header" data-ani="up">
+            <span class="eyebrow">FAQ</span>
+            <h2>Najczęściej zadawane pytania</h2>
+            <p class="section-desc">Odpowiedzi, które słyszymy najczęściej</p>
+        </div>
+        <div class="faq-list">
+            {% for item in faq %}
+            <div class="faq-item" data-ani="up" data-delay="{{ loop.index0 * 50 }}">
+                <button class="faq-q" aria-expanded="false" aria-controls="fa-{{ loop.index }}">
+                    <span>{{ item.q }}</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-a" id="fa-{{ loop.index }}"><p>{{ item.a }}</p></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# ===== CONTACT ===== #}
+<section class="contact" id="kontakt">
+    <div class="contact-grid">
+        <div class="contact-info" data-ani="right">
+            <span class="eyebrow">Kontakt & Zapisy</span>
+            <h2>Gotowa zacząć?</h2>
+            <p class="contact-desc">Napisz do nas — odpowiemy na wszystkie pytania i pomożemy wybrać zajęcia idealne dla Ciebie.</p>
+            <div class="cinfo-list">
+                <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><strong>Adres</strong><span>ul. Przykładowa 12, 00-000 Warszawa</span></div></div>
+                <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.87 2 2 0 0 1 3.58 2.67h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 17z"/></svg></div><div><strong>Telefon</strong><span><a href="tel:+48500000000">+48 500 000 000</a></span></div></div>
+                <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><strong>Email</strong><span><a href="mailto:hello@animaeris.pl">hello@animaeris.pl</a></span></div></div>
+                <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><strong>Godziny</strong><span>Pon–Pt: 8–21 | Sob–Ndz: 9–18</span></div></div>
+            </div>
+            <div class="contact-socials">
+                <a href="#" class="c-social" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>@animaeris</a>
+                <a href="#" class="c-social" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Animaeris Studio</a>
+            </div>
+        </div>
+        <div class="contact-form-wrap" data-ani="left">
+            <form class="cform" action="/kontakt" method="post" id="cForm" novalidate>
+                <h3>Wyślij wiadomość</h3>
+                <div class="field">
+                    <label for="f-name">Imię i nazwisko *</label>
+                    <input type="text" id="f-name" name="name" placeholder="Anna Kowalska" required autocomplete="name">
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label for="f-email">Email *</label>
+                        <input type="email" id="f-email" name="email" placeholder="anna@example.com" required autocomplete="email">
+                    </div>
+                    <div class="field">
+                        <label for="f-phone">Telefon</label>
+                        <input type="tel" id="f-phone" name="phone" placeholder="+48 500 000 000" autocomplete="tel">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="f-class">Rodzaj zajęć</label>
+                    <select id="f-class" name="class_type">
+                        <option value="">Wybierz zajęcia...</option>
+                        <optgroup label="Zajęcia SOFT">
+                            <option>Mobilność i rollowanie</option>
+                            <option>Rozciąganie</option>
+                            <option>Wzmacnianie</option>
+                            <option>Cardio Dance</option>
+                            <option>Zajęcia usprawniające</option>
+                        </optgroup>
+                        <optgroup label="Zajęcia PREMIUM">
+                            <option>Aerial Hoop</option>
+                            <option>Flying Pole</option>
+                            <option>Aerial Yoga</option>
+                            <option>Hamaki</option>
+                            <option>Samoobrona</option>
+                        </optgroup>
+                        <option>Open Studio</option>
+                        <option>Wynajem sali</option>
+                        <option>Inne pytanie</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="f-msg">Wiadomość *</label>
+                    <textarea id="f-msg" name="message" rows="5" placeholder="Napisz coś o sobie i czego szukasz..." required></textarea>
+                </div>
+                <div class="field-check">
+                    <label class="check-label">
+                        <input type="checkbox" name="consent" required>
+                        <span class="check-box"></span>
+                        <span>Wyrażam zgodę na przetwarzanie danych osobowych w celu udzielenia odpowiedzi na moją wiadomość.</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary w-full btn-send">
+                    <span>Wyślij wiadomość</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{# ===== CTA STRIP ===== #}
+<section class="cta-strip">
+    <div class="cta-bg">
+        <img src="https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg?auto=compress&cs=tinysrgb&w=1920&q=70" alt="" aria-hidden="true" loading="lazy">
+        <div class="cta-overlay"></div>
+    </div>
+    <div class="cta-content" data-ani="up">
+        <h2>Twoja przygoda zaczyna się dzisiaj</h2>
+        <p>Pierwsze zajęcia próbne w cenie standardowego wejścia.</p>
+        <a href="#kontakt" class="btn btn-light">Zarezerwuj miejsce</a>
+    </div>
+</section>
+
+{% endblock %}

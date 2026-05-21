@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_desc %}Animaeris — studio aerial arts i wellness. Aerial Hoop, Flying Pole, Aerial Yoga, Hamaki i więcej. Zapisz się już dziś.{% endblock %}">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Animaeris — Studio Aerial & Wellness">
+    <meta property="og:description" content="Odkryj swoją siłę i piękno w wyjątkowym studiu aerial arts.">
+    <meta property="og:image" content="/images/IMG_2326.PNG">
+    <meta property="og:locale" content="pl_PL">
+    <title>{% block title %}Animaeris — Studio Aerial & Wellness{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Forum&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Animaeris — strona główna">
+            <img src="/images/IMG_2326.PNG" alt="Animaeris" class="nav-logo-img">
+        </a>
+        <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#o-studiu"  class="nav-link">O Studiu</a></li>
+            <li><a href="#zajecia"   class="nav-link">Zajęcia</a></li>
+            <li><a href="#grafik"    class="nav-link">Grafik</a></li>
+            <li><a href="#cennik"    class="nav-link">Cennik</a></li>
+            <li><a href="#galeria"   class="nav-link">Galeria</a></li>
+            <li><a href="#faq"       class="nav-link">FAQ</a></li>
+            <li><a href="#kontakt"   class="nav-link nav-cta">Zapisz się</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>{% block content %}{% endblock %}</main>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <img src="/images/IMG_2326.PNG" alt="Animaeris" class="footer-logo">
+            <p class="footer-tagline">Odkryj swoją siłę i piękno</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+                </a>
+                <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Nawigacja</h4>
+            <ul>
+                <li><a href="#o-studiu">O Studiu</a></li>
+                <li><a href="#zajecia">Zajęcia</a></li>
+                <li><a href="#grafik">Grafik</a></li>
+                <li><a href="#cennik">Cennik</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Kontakt</h4>
+            <address>
+                <p>ul. Przykładowa 12<br>00-000 Warszawa</p>
+                <p><a href="tel:+48500000000">+48 500 000 000</a></p>
+                <p><a href="mailto:hello@animaeris.pl">hello@animaeris.pl</a></p>
+            </address>
+        </div>
+        <div class="footer-col">
+            <h4>Godziny otwarcia</h4>
+            <p>Pon–Pt: 8:00–21:00</p>
+            <p>Sob–Ndz: 9:00–18:00</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; {{ "now"|date("Y") }} Animaeris. Wszelkie prawa zastrzeżone.</p>
+    </div>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
