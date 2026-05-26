@@ -2,13 +2,19 @@
 
 namespace App\Controller;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
+	private const CONTACT_RECIPIENT = 'animaeris.studio@gmail.com';
+
 	#[Route('/', name: 'home', methods: ['GET'])]
 	public function index(): Response
 	{
@@ -16,7 +22,7 @@ class HomeController extends AbstractController
 	}
 
 	#[Route('/kontakt', name: 'contact', methods: ['POST'])]
-	public function contact(Request $request): Response
+	public function contact(Request $request, MailerInterface $mailer, LoggerInterface $logger): Response
 	{
 		$input = [
 			'name' => trim((string)$request->request->get('name', '')),
@@ -29,6 +35,16 @@ class HomeController extends AbstractController
 
 		$errors = $this->validateContact($input, (string)$request->request->get('_token', ''));
 
+		if ($errors === []) {
+			try {
+				$mailer->send($this->buildContactEmail($input));
+				$mailer->send($this->buildConfirmationEmail($input));
+			} catch (TransportExceptionInterface $e) {
+				$logger->error('Nie udało się wysłać wiadomości z formularza kontaktowego.', ['exception' => $e]);
+				$errors['_send'] = 'Nie udało się wysłać wiadomości. Spróbuj ponownie później lub napisz bezpośrednio na ' . self::CONTACT_RECIPIENT . '.';
+			}
+		}
+
 		if ($errors !== []) {
 			return $this->render('home/index.html.twig', $this->pageData([
 				'contact_errors' => $errors,
@@ -37,6 +53,58 @@ class HomeController extends AbstractController
 		}
 
 		return $this->render('home/contact_success.html.twig', ['name' => $input['name']]);
+	}
+
+	/**
+	 * @param array<string, mixed> $input
+	 */
+	private function buildContactEmail(array $input): Email
+	{
+		$lines = [
+			'Imię i nazwisko: ' . $input['name'],
+			'E-mail: ' . $input['email'],
+			'Telefon: ' . ($input['phone'] !== '' ? $input['phone'] : '-'),
+			'Zajęcia: ' . ($input['class'] !== '' ? $input['class'] : '-'),
+			'',
+			'Wiadomość:',
+			$input['message'],
+		];
+
+		return new Email()
+			->from(self::CONTACT_RECIPIENT)
+			->to(self::CONTACT_RECIPIENT)
+			->replyTo($input['email'])
+			->subject('Formularz kontaktowy - ' . $input['name'])
+			->text(implode("\n", $lines));
+	}
+
+	/**
+	 * @param array<string, mixed> $input
+	 */
+	private function buildConfirmationEmail(array $input): Email
+	{
+		$lines = [
+			'Cześć ' . $input['name'] . ',',
+			'',
+			'dziękujemy za wiadomość! Otrzymaliśmy ją i odezwiemy się najszybciej, jak to możliwe.',
+			'Poniżej kopia tego, co do nas wysłałaś/eś:',
+			'',
+			'Telefon: ' . ($input['phone'] !== '' ? $input['phone'] : '-'),
+			'Zajęcia: ' . ($input['class'] !== '' ? $input['class'] : '-'),
+			'',
+			'Wiadomość:',
+			$input['message'],
+			'',
+			'Pozdrawiamy,',
+			'Animaeris Studio',
+		];
+
+		return new Email()
+			->from(self::CONTACT_RECIPIENT)
+			->to($input['email'])
+			->replyTo(self::CONTACT_RECIPIENT)
+			->subject('Potwierdzenie - otrzymaliśmy Twoją wiadomość')
+			->text(implode("\n", $lines));
 	}
 
 	/**
@@ -278,7 +346,7 @@ class HomeController extends AbstractController
 				'note' => 'Z kartą sportową: dopłata sprzętowa 20 zł',
 			],
 			'membership' => [
-				'name' => 'Członkowstwo',
+				'name' => 'Członkostwo',
 				'description' => 'Pełen dostęp do studia w stałej, miesięcznej cenie.',
 				'price' => '650 zł',
 				'per' => '/ miesiąc',

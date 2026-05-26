@@ -1,89 +1,182 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block meta_desc %}Animaeris - studio aktywizacji sportowej i regeneracji w Gdańsku. Zajęcia dla każdego, w dowolnym wieku: Aerial Hoop, Aerial Yoga, Hamaki, trening, masaż i wellness.{% endblock %}">
-    <meta name="robots" content="index, follow">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Animaeris - Studio aktywizacji sportowej i regeneracji">
-    <meta property="og:description" content="Zajęcia dla każdego, w dowolnym wieku - aerial, trening, masaż i wellness w Gdańsku.">
-    <meta property="og:image" content="/images/og.png">
-    <meta property="og:locale" content="pl_PL">
-    <title>{% block title %}Animaeris - Studio Aerial & Wellness{% endblock %}</title>
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+	<meta charset="UTF-8">
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0">
+	<meta
+		name="description"
+		content="{% block meta_desc %}Animaeris - studio aktywizacji sportowej i regeneracji w Gdańsku. Zajęcia dla każdego, w dowolnym wieku: Aerial Hoop, Aerial Yoga, Hamaki, trening, masaż i wellness.{% endblock %}">
+	<meta
+		name="robots"
+		content="index, follow">
+	<meta
+		property="og:type"
+		content="website">
+	<meta
+		property="og:title"
+		content="Animaeris - Studio aktywizacji sportowej i regeneracji">
+	<meta
+		property="og:description"
+		content="Zajęcia dla każdego, w dowolnym wieku - aerial, trening, masaż i wellness w Gdańsku.">
+	<meta
+		property="og:image"
+		content="/images/og.png">
+	<meta
+		property="og:locale"
+		content="pl_PL">
+	<title>{% block title %}Animaeris - Studio Aerial & Wellness{% endblock %}</title>
+	<link
+		rel="icon"
+		href="/favicon.ico"
+		sizes="any">
+	<link
+		rel="apple-touch-icon"
+		href="/apple-touch-icon.png">
+	<link
+		rel="preconnect"
+		href="https://fonts.googleapis.com">
+	<link
+		rel="preconnect"
+		href="https://fonts.gstatic.com"
+		crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@300;400;500;600&display=swap"
+		rel="stylesheet">
+	<link
+		rel="stylesheet"
+		href="/css/style.css">
 </head>
 <body>
 
-<nav class="navbar" id="navbar">
-    <div class="nav-inner">
-        <a href="/" class="nav-logo" aria-label="Animaeris - strona główna">
-            <img src="/images/emblem.png" alt="" class="nav-logo-mark" aria-hidden="true">
-            <span class="nav-logo-word">Animaeris</span>
-        </a>
-        <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="#o-studiu"  class="nav-link">O Studiu</a></li>
-            <li><a href="#zajecia"   class="nav-link">Zajęcia</a></li>
-            <li><a href="#grafik"    class="nav-link">Grafik</a></li>
-            <li><a href="#cennik"    class="nav-link">Cennik</a></li>
-            <li><a href="#galeria"   class="nav-link">Galeria</a></li>
-            <li><a href="#faq"       class="nav-link">FAQ</a></li>
-            <li><a href="#kontakt"   class="nav-link nav-cta">Zapisz się</a></li>
-        </ul>
-    </div>
+<nav
+	class="navbar"
+	id="navbar">
+	<div class="nav-inner">
+		<a
+			href="/"
+			class="nav-logo"
+			aria-label="Animaeris - strona główna">
+			<img
+				src="/images/emblem.png"
+				alt=""
+				class="nav-logo-mark"
+				aria-hidden="true">
+			<span class="nav-logo-word">Animaeris</span>
+		</a>
+		<button
+			class="nav-burger"
+			id="navBurger"
+			aria-label="Menu"
+			aria-expanded="false">
+			<span></span><span></span><span></span>
+		</button>
+		<ul
+			class="nav-menu"
+			id="navMenu">
+			<li><a
+					href="#o-studiu"
+					class="nav-link">O Studiu</a></li>
+			<li><a
+					href="#zajecia"
+					class="nav-link">Zajęcia</a></li>
+			<li><a
+					href="#grafik"
+					class="nav-link">Grafik</a></li>
+			<li><a
+					href="#cennik"
+					class="nav-link">Cennik</a></li>
+			<li><a
+					href="#galeria"
+					class="nav-link">Galeria</a></li>
+			<li><a
+					href="#faq"
+					class="nav-link">FAQ</a></li>
+			<li><a
+					href="#kontakt"
+					class="nav-link nav-cta">Zapisz się</a></li>
+		</ul>
+	</div>
 </nav>
 
 <main>{% block content %}{% endblock %}</main>
 
 <footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-brand">
-            <a href="/" class="footer-logo-lockup" aria-label="Animaeris">
-                <img src="/images/emblem-light.png" alt="" class="footer-logo" aria-hidden="true">
-                <span class="footer-logo-word">Animaeris</span>
-            </a>
-            <p class="footer-tagline">Odkryj swoją siłę i piękno</p>
-            <div class="footer-socials">
-                <a href="https://instagram.com/animaeris" aria-label="Instagram" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-                </a>
-            </div>
-        </div>
-        <div class="footer-col">
-            <h4>Nawigacja</h4>
-            <ul>
-                <li><a href="#o-studiu">O Studiu</a></li>
-                <li><a href="#zajecia">Zajęcia</a></li>
-                <li><a href="#grafik">Grafik</a></li>
-                <li><a href="#cennik">Cennik</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Kontakt</h4>
-            <address>
-                <p>Trakt Świętego Wojciecha 29<br>pok. 54 (budynek 2), Gdańsk</p>
-                <p><a href="https://wa.me/48727772862" target="_blank" rel="noopener">WhatsApp: 727 772 862</a></p>
-                <p><a href="mailto:animaeris.studio@gmail.com">animaeris.studio@gmail.com</a></p>
-            </address>
-        </div>
-        <div class="footer-col">
-            <h4>Godziny otwarcia</h4>
-            <p>Pn-Pt: 8:00-20:00</p>
-            <p>Sb-Nd: 9:00-18:00</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; {{ "now"|date("Y") }} Animaeris. Wszelkie prawa zastrzeżone.</p>
-    </div>
+	<div class="footer-inner">
+		<div class="footer-brand">
+			<a
+				href="/"
+				class="footer-logo-lockup"
+				aria-label="Animaeris">
+				<img
+					src="/images/emblem-light.png"
+					alt=""
+					class="footer-logo"
+					aria-hidden="true">
+				<span class="footer-logo-word">Animaeris</span>
+			</a>
+			<p class="footer-tagline">Odkryj swoją siłę i piękno</p>
+			<div class="footer-socials">
+				<a
+					href="https://instagram.com/animaeris"
+					aria-label="Instagram"
+					target="_blank"
+					rel="noopener">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5">
+						<rect
+							x="2"
+							y="2"
+							width="20"
+							height="20"
+							rx="5"/>
+						<circle
+							cx="12"
+							cy="12"
+							r="4"/>
+						<circle
+							cx="17.5"
+							cy="6.5"
+							r="0.5"
+							fill="currentColor"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+		<div class="footer-col">
+			<h4>Nawigacja</h4>
+			<ul>
+				<li><a href="#o-studiu">O Studiu</a></li>
+				<li><a href="#zajecia">Zajęcia</a></li>
+				<li><a href="#grafik">Grafik</a></li>
+				<li><a href="#cennik">Cennik</a></li>
+				<li><a href="#kontakt">Kontakt</a></li>
+			</ul>
+		</div>
+		<div class="footer-col">
+			<h4>Kontakt</h4>
+			<address>
+				<p>Trakt Świętego Wojciecha 29<br>pok. 54 (budynek 2), Gdańsk</p>
+				<p><a
+						href="https://wa.me/48727772862"
+						target="_blank"
+						rel="noopener">WhatsApp: 727 772 862</a></p>
+				<p><a href="mailto:animaeris.studio@gmail.com">animaeris.studio@gmail.com</a></p>
+			</address>
+		</div>
+		<div class="footer-col">
+			<h4>Godziny otwarcia</h4>
+			<p>Pn-Pt: 8:00-20:00</p>
+			<p>Sb-Nd: 9:00-18:00</p>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<p>&copy; {{ "now"|date("Y") }} Animaeris. Wszelkie prawa zastrzeżone.</p>
+	</div>
 </footer>
 
 <script src="/js/main.js"></script>
