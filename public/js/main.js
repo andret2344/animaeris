@@ -59,23 +59,37 @@
 
 /* --- Schedule tabs -------------------------------------------- */
 (function(){
-  const tabs   = document.querySelectorAll('.sched-tab');
+  const tabs   = Array.from(document.querySelectorAll('.sched-tab'));
   const panels = document.querySelectorAll('.sched-panel');
   if(!tabs.length) return;
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      panels.forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
-      const panel = document.getElementById(tab.dataset.panel);
-      if(panel){
-        panel.classList.add('active');
-        panel.style.cssText = 'opacity:0;transform:translateY(8px)';
-        requestAnimationFrame(() => {
-          panel.style.cssText = 'transition:opacity .3s ease,transform .3s ease;opacity:1;transform:translateY(0)';
-        });
-      }
+
+  const activate = (tab, focus) => {
+    tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); });
+    panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    tab.setAttribute('tabindex','0');
+    if(focus) tab.focus();
+    const panel = document.getElementById(tab.dataset.panel);
+    if(panel){
+      panel.hidden = false;
+      panel.classList.add('active');
+      panel.style.cssText = 'opacity:0;transform:translateY(8px)';
+      requestAnimationFrame(() => {
+        panel.style.cssText = 'transition:opacity .3s ease,transform .3s ease;opacity:1;transform:translateY(0)';
+      });
+    }
+  };
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activate(tab, false));
+    tab.addEventListener('keydown', e => {
+      let next = null;
+      if(e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
+      else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if(e.key === 'Home') next = tabs[0];
+      else if(e.key === 'End') next = tabs[tabs.length - 1];
+      if(next){ e.preventDefault(); activate(next, true); }
     });
   });
 })();

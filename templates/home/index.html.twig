@@ -5,14 +5,14 @@
 {# ===== HERO ===== #}
 <section class="hero" id="hero">
     <div class="hero-bg">
-        <img src="/images/studio.jpg" alt="Sala aerial w studiu Animaeris" class="hero-img" loading="eager">
+        <img src="/images/hero.jpg" alt="Sala aerial w studiu Animaeris" class="hero-img" loading="eager">
         <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
         <div class="hero-inner" data-ani="up">
-            <span class="eyebrow">Studio aktywizacji sportowej i regeneracji</span>
-            <h1 class="hero-title">Miejsce,<br>w którym<br><em>zadbasz o siebie</em></h1>
-            <p class="hero-sub">Zajęcia dla każdego, w dowolnym wieku — od regeneracji i masażu, po sporty powietrzne i trening techniczny.</p>
+            <span class="eyebrow">Zapraszamy!</span>
+            <h1 class="hero-title">Studio aktywizacji<br>sportowej<br><em>i regeneracji</em></h1>
+            <p class="hero-sub">Zajęcia dla każdego, w dowolnym wieku - od regeneracji i masażu, po sporty powietrzne i trening techniczny.</p>
             <div class="hero-btns">
                 <a href="#kontakt" class="btn btn-primary">Zapisz się na zajęcia</a>
                 <a href="#o-studiu" class="btn btn-ghost">Poznaj nas</a>
@@ -20,8 +20,8 @@
         </div>
     </div>
     <div class="hero-scroll" aria-hidden="true">
-        <span>Przewiń</span>
         <div class="scroll-line"></div>
+        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
 </section>
 
@@ -52,7 +52,7 @@
     <div class="about-grid">
         <div class="about-media" data-ani="right">
             <div class="about-imgs">
-                <img src="/images/forest.jpg" alt="Aerial Hoop w plenerze" class="about-main-img" loading="lazy">
+                <img src="/images/about-main.jpg" alt="Wnętrze studia Animaeris" class="about-main-img" loading="lazy">
                 <img src="/images/wellness.jpg" alt="Strefa wellness i masażu" class="about-sec-img" loading="lazy">
             </div>
             <div class="about-badge">
@@ -62,9 +62,9 @@
         </div>
         <div class="about-text" data-ani="left">
             <span class="eyebrow">O Studiu</span>
-            <h2>Miejsce, w którym<br>zadbasz o siebie</h2>
-            <p>ANIMAERIS to studio aktywizacji sportowej i regeneracji. Nasza oferta skierowana jest do każdej osoby, w dowolnym wieku. Znajdziesz tu zajęcia zarówno dla dzieci, jak i seniorów, masaże, a także bardziej wymagające zajęcia techniczne.</p>
-            <p>Wierzymy, że ruch ma być przyjemnością. Panuje tu atmosfera wzajemnego wsparcia, akceptacji i radości — bez presji i porównań.</p>
+            <h2>Miejsce, w&nbsp;którym<br>zadbasz o&nbsp;siebie</h2>
+            <p>ANIMAERIS to studio aktywizacji sportowej i&nbsp;regeneracji. Nasza oferta skierowana jest do każdej osoby, w&nbsp;dowolnym wieku. Znajdziesz tu zajęcia zarówno dla dzieci, jak i&nbsp;seniorów, masaże, a&nbsp;także bardziej wymagające zajęcia techniczne.</p>
+            <p>Wierzymy, że ruch ma być przyjemnością. Panuje tu atmosfera wzajemnego wsparcia, akceptacji i&nbsp;radości - bez presji i&nbsp;porównań.</p>
             <div class="about-features">
                 <div class="feat">
                     <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -89,7 +89,7 @@
     <div class="section-header" data-ani="up">
         <span class="eyebrow">Nasze zajęcia</span>
         <h2>Co oferujemy</h2>
-        <p class="section-desc">Od regeneracji po sporty powietrzne — dla każdego poziomu zaawansowania</p>
+        <p class="section-desc">Od regeneracji po sporty powietrzne - dla każdego poziomu zaawansowania</p>
     </div>
     <div class="classes-grid">
         {% for c in classes %}
@@ -146,25 +146,32 @@
         <div class="sched-legend">
             <span class="leg soft">SOFT</span>
             <span class="leg premium">PREMIUM</span>
-            <span class="leg open">Open Studio</span>
         </div>
-        <div class="sched-tabs" role="tablist">
+        <div class="sched-tabs" role="tablist" aria-label="Dni tygodnia">
             {% for day, classes in schedule %}
-            <button class="sched-tab{% if loop.first %} active{% endif %}" role="tab" aria-selected="{{ loop.first ? 'true' : 'false' }}" data-panel="panel-{{ loop.index }}">{{ day }}</button>
+            <button class="sched-tab{% if loop.first %} active{% endif %}" role="tab" id="tab-{{ loop.index }}"
+                    aria-selected="{{ loop.first ? 'true' : 'false' }}" aria-controls="panel-{{ loop.index }}"
+                    tabindex="{{ loop.first ? '0' : '-1' }}" data-panel="panel-{{ loop.index }}">{{ day }}</button>
             {% endfor %}
         </div>
         {% for day, classes in schedule %}
-        <div class="sched-panel{% if loop.first %} active{% endif %}" id="panel-{{ loop.index }}">
+        <div class="sched-panel{% if loop.first %} active{% endif %}" id="panel-{{ loop.index }}"
+             role="tabpanel" aria-labelledby="tab-{{ loop.index }}" tabindex="0"{% if not loop.first %} hidden{% endif %}>
             {% for c in classes %}
-            <div class="sched-row sched-{{ c.type }}">
+            {% set rs = c.room == 'Sala Liliowa' ? 'liliowa' : (c.room == 'Sala Cream' ? 'cream' : 'other') %}
+            <div class="sched-row room-{{ rs }} sched-{{ c.type }}">
                 <span class="sched-time">{{ c.time }}</span>
                 <div class="sched-info">
                     <strong>{{ c.name }}</strong>
-                    <span>{{ c.duration }} min</span>
                 </div>
-                <span class="sched-badge {{ c.type }}">{{ c.type == 'soft' ? 'SOFT' : (c.type == 'premium' ? 'PREMIUM' : 'Open Studio') }}</span>
+                <div class="sched-meta">
+                    <span class="sched-room {{ rs }}">{{ c.room }}</span>
+                    <span class="sched-badge {{ c.type }}">{{ c.type == 'premium' ? 'PREMIUM' : 'SOFT' }}</span>
+                </div>
                 <a href="#kontakt" class="sched-book">Zapisz się</a>
             </div>
+            {% else %}
+            <p class="sched-empty">Tego dnia nie prowadzimy zajęć. Zapraszamy od poniedziałku do piątku.</p>
             {% endfor %}
         </div>
         {% endfor %}
@@ -193,8 +200,8 @@
                     {% endfor %}
                 </div>
                 <div class="pcard-foot">
-                    <p class="pcard-note">* {{ pricing.soft.note }}</p>
                     <a href="#kontakt" class="btn btn-outline w-full">Zapisz się</a>
+                    <p class="pcard-note">* {{ pricing.soft.note }}</p>
                 </div>
             </div>
             {# PREMIUM #}
@@ -210,24 +217,28 @@
                     {% endfor %}
                 </div>
                 <div class="pcard-foot">
-                    <p class="pcard-note">* {{ pricing.premium.note }}</p>
                     <a href="#kontakt" class="btn btn-primary w-full">Zapisz się</a>
+                    <p class="pcard-note">* {{ pricing.premium.note }}</p>
                 </div>
             </div>
-            {# EVENTS #}
+            {# MEMBERSHIP #}
             <div class="pcard pcard-member" data-ani="up" data-delay="300">
                 <div class="pcard-head">
-                    <span class="pcard-badge member">WYDARZENIA</span>
-                    <h3>{{ pricing.events.name }}</h3>
-                    <p>{{ pricing.events.description }}</p>
+                    <span class="pcard-badge member">CZŁONKOWSTWO</span>
+                    <h3>{{ pricing.membership.name }}</h3>
+                    <p>{{ pricing.membership.description }}</p>
+                    <div class="member-price">
+                        <span class="mp-amount">{{ pricing.membership.price }}</span>
+                        <span class="mp-per">{{ pricing.membership.per }}</span>
+                    </div>
                 </div>
                 <div class="pcard-body">
-                    {% for f in pricing.events.features %}
+                    {% for f in pricing.membership.features %}
                     <div class="pcard-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>{{ f }}</div>
                     {% endfor %}
                 </div>
                 <div class="pcard-foot">
-                    <a href="#kontakt" class="btn btn-primary w-full">Zapytaj o termin</a>
+                    <a href="#kontakt" class="btn btn-primary w-full">Dołącz</a>
                 </div>
             </div>
         </div>
@@ -250,13 +261,14 @@
 <section class="gallery" id="galeria">
     <div class="section-header" data-ani="up">
         <span class="eyebrow">Galeria</span>
-        <h2>Nasza przestrzeń</h2>
-        <p class="section-desc">Zajrzyj do środka, zanim przyjdziesz</p>
+        <h2>Nasza galeria</h2>
+        <p class="section-desc">Trenerki, zajęcia, sale</p>
     </div>
     <div class="gallery-grid">
-        <div class="g-item" data-ani="up" data-delay="0"><img src="/images/studio.jpg" alt="Sala aerial — koła i hamaki" loading="lazy"><div class="g-overlay"></div></div>
-        <div class="g-item" data-ani="up" data-delay="100"><img src="/images/wellness.jpg" alt="Strefa wellness i masażu" loading="lazy"><div class="g-overlay"></div></div>
-        <div class="g-item" data-ani="up" data-delay="200"><img src="/images/massage-table.jpg" alt="Gabinet masażu" loading="lazy"><div class="g-overlay"></div></div>
+        <div class="g-item" data-ani="up" data-delay="0"><img src="/images/r2.jpg" alt="Animaeris - galeria 1" loading="lazy"><div class="g-overlay"></div></div>
+        <div class="g-item" data-ani="up" data-delay="80"><img src="/images/r3.jpg" alt="Animaeris - galeria 2" loading="lazy"><div class="g-overlay"></div></div>
+        <div class="g-item" data-ani="up" data-delay="160"><img src="/images/r4.jpg" alt="Animaeris - galeria 3" loading="lazy"><div class="g-overlay"></div></div>
+        <div class="g-item" data-ani="up" data-delay="240"><img src="/images/r5.jpg" alt="Animaeris - galeria 4" loading="lazy"><div class="g-overlay"></div></div>
     </div>
 </section>
 
@@ -288,12 +300,12 @@
         <div class="contact-info" data-ani="right">
             <span class="eyebrow">Kontakt & Zapisy</span>
             <h2>Gotowa zacząć?</h2>
-            <p class="contact-desc">Napisz do nas na WhatsApp lub mailem — odpowiemy na wszystkie pytania i pomożemy wybrać zajęcia idealne dla Ciebie.</p>
+            <p class="contact-desc">Napisz do nas na WhatsApp lub mailem - odpowiemy na wszystkie pytania i pomożemy wybrać zajęcia idealne dla Ciebie.</p>
             <div class="cinfo-list">
                 <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><strong>Adres</strong><span>Trakt Świętego Wojciecha 29, pok. 54 (budynek 2), Gdańsk</span></div></div>
-                <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.87 2 2 0 0 1 3.58 2.67h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 17z"/></svg></div><div><strong>WhatsApp</strong><span><a href="https://wa.me/48727772862" target="_blank" rel="noopener">727 772 862</a> — najlepiej napisz</span></div></div>
+                <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.87 2 2 0 0 1 3.58 2.67h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 17z"/></svg></div><div><strong>WhatsApp</strong><span><a href="https://wa.me/48727772862" target="_blank" rel="noopener">727 772 862</a> - najlepiej napisz</span></div></div>
                 <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><strong>Email</strong><span><a href="mailto:animaeris.studio@gmail.com">animaeris.studio@gmail.com</a></span></div></div>
-                <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><strong>Godziny</strong><span>Pon–Pt: 8:00–20:00</span></div></div>
+                <div class="cinfo"><div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><strong>Godziny</strong><span>Pn-Pt: 8:00-20:00 | Sb-Nd: 9:00-18:00</span></div></div>
             </div>
             <div class="contact-socials">
                 <a href="https://instagram.com/animaeris" class="c-social" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>@animaeris</a>
@@ -302,18 +314,28 @@
         <div class="contact-form-wrap" data-ani="left">
             <form class="cform" action="/kontakt" method="post" id="cForm" novalidate>
                 <h3>Wyślij wiadomość</h3>
+                <input type="hidden" name="_token" value="{{ csrf_token('contact') }}">
+                {% if contact_errors._token is defined %}
+                <p class="form-alert" role="alert">{{ contact_errors._token }}</p>
+                {% endif %}
                 <div class="field">
                     <label for="f-name">Imię i nazwisko *</label>
-                    <input type="text" id="f-name" name="name" placeholder="Anna Kowalska" required autocomplete="name">
+                    <input type="text" id="f-name" name="name" placeholder="Anna Kowalska" required autocomplete="name"
+                           value="{{ contact_old.name|default('') }}"
+                           {% if contact_errors.name is defined %}class="field-err" aria-invalid="true" aria-describedby="e-name"{% endif %}>
+                    {% if contact_errors.name is defined %}<span class="field-msg" id="e-name">{{ contact_errors.name }}</span>{% endif %}
                 </div>
                 <div class="field-row">
                     <div class="field">
                         <label for="f-email">Email *</label>
-                        <input type="email" id="f-email" name="email" placeholder="anna@example.com" required autocomplete="email">
+                        <input type="email" id="f-email" name="email" placeholder="anna@example.com" required autocomplete="email"
+                               value="{{ contact_old.email|default('') }}"
+                               {% if contact_errors.email is defined %}class="field-err" aria-invalid="true" aria-describedby="e-email"{% endif %}>
+                        {% if contact_errors.email is defined %}<span class="field-msg" id="e-email">{{ contact_errors.email }}</span>{% endif %}
                     </div>
                     <div class="field">
                         <label for="f-phone">WhatsApp</label>
-                        <input type="tel" id="f-phone" name="phone" placeholder="727 772 862" autocomplete="tel">
+                        <input type="tel" id="f-phone" name="phone" placeholder="727 772 862" autocomplete="tel" value="{{ contact_old.phone|default('') }}">
                     </div>
                 </div>
                 <div class="field">
@@ -333,8 +355,7 @@
                         <optgroup label="Zajęcia PREMIUM">
                             <option>Aerial Hoop</option>
                             <option>Aerial Yoga</option>
-                            <option>Hamaki</option>
-                            <option>Flying Pole (wkrótce)</option>
+                            <option>Hamaki technika</option>
                             <option>Samoobrona</option>
                         </optgroup>
                         <optgroup label="Pozostałe">
@@ -348,14 +369,17 @@
                 </div>
                 <div class="field">
                     <label for="f-msg">Wiadomość *</label>
-                    <textarea id="f-msg" name="message" rows="5" placeholder="Napisz coś o sobie i czego szukasz..." required></textarea>
+                    <textarea id="f-msg" name="message" rows="5" placeholder="Napisz coś o sobie i czego szukasz..." required
+                              {% if contact_errors.message is defined %}class="field-err" aria-invalid="true" aria-describedby="e-msg"{% endif %}>{{ contact_old.message|default('') }}</textarea>
+                    {% if contact_errors.message is defined %}<span class="field-msg" id="e-msg">{{ contact_errors.message }}</span>{% endif %}
                 </div>
                 <div class="field-check">
                     <label class="check-label">
-                        <input type="checkbox" name="consent" required>
+                        <input type="checkbox" name="consent" required{% if contact_old.consent|default(false) %} checked{% endif %}>
                         <span class="check-box"></span>
                         <span>Wyrażam zgodę na przetwarzanie danych osobowych w celu udzielenia odpowiedzi na moją wiadomość.</span>
                     </label>
+                    {% if contact_errors.consent is defined %}<span class="field-msg" id="e-consent">{{ contact_errors.consent }}</span>{% endif %}
                 </div>
                 <button type="submit" class="btn btn-primary w-full btn-send">
                     <span>Wyślij wiadomość</span>
@@ -369,12 +393,12 @@
 {# ===== CTA STRIP ===== #}
 <section class="cta-strip">
     <div class="cta-bg">
-        <img src="/images/studio.jpg" alt="" aria-hidden="true" loading="lazy">
+        <img src="/images/cta.jpg" alt="" aria-hidden="true" loading="lazy">
         <div class="cta-overlay"></div>
     </div>
     <div class="cta-content" data-ani="up">
         <h2>Twoja przygoda zaczyna się dzisiaj</h2>
-        <p>Pierwsze zajęcia próbne w cenie standardowego wejścia.</p>
+        <p>Pierwsze zajęcia masz u nas całkowicie za darmo.</p>
         <a href="#kontakt" class="btn btn-light">Zarezerwuj miejsce</a>
     </div>
 </section>
