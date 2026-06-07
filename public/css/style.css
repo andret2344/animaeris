@@ -311,20 +311,37 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
 .class-body p  { font-size: .875rem; color: var(--wg); line-height: 1.65; margin-bottom: var(--s3); }
 .class-price { margin-top: auto; font-size: .8125rem; font-weight: 600; color: var(--m300); letter-spacing: .04em; }
 
+/* Class groups (Wellness / SOFT / PREMIUM) */
+.class-group { margin-top: var(--s10); }
+.class-group-head { max-width: var(--mw); margin: 0 auto var(--s5); padding: 0 var(--s4); display: flex; align-items: center; gap: var(--s3); }
+.class-group-head .eyebrow { margin-bottom: 0; font-size: .8125rem; }
+.class-group-head::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--b300), transparent); }
+
+/* Wellness feature banner */
+.class-feature { max-width: var(--mw); margin: 0 auto; padding: 0 var(--s4); }
+.class-feature-card { display: flex; flex-direction: column; background: var(--b200); border: 1px solid var(--b300); border-radius: var(--rl); overflow: hidden; box-shadow: var(--sh2); transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
+.class-feature-card:hover { transform: translateY(-6px); box-shadow: var(--sh4); }
+.class-feature-img { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+.class-feature-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.class-feature-card:hover .class-feature-img img { transform: scale(1.04); }
+.class-feature-body { display: flex; flex-direction: column; gap: var(--s2); padding: var(--s5); }
+.class-feature-body h3 { font-size: 1.5rem; }
+.class-feature-body p { color: var(--wg); line-height: 1.7; }
+.class-feature-body .class-price { margin-top: var(--s1); }
+
 /* ================================================================
    TRAINERS
    ================================================================ */
 .trainers { padding: var(--sp) 0; background: var(--b100); }
-.trainers-grid { max-width: 400px; margin: 0 auto; padding: 0 var(--s4); display: grid; grid-template-columns: 1fr; gap: var(--s6); }
-.trainer-card { text-align: left; background: var(--b200); border: 1px solid var(--b300); border-radius: var(--rl); overflow: hidden; box-shadow: var(--sh2); transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
-.trainer-card:hover { transform: translateY(-6px); box-shadow: var(--sh4); }
-.trainer-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; }
+.trainers-list { max-width: 440px; margin: 0 auto; padding: 0 var(--s4); display: flex; flex-direction: column; gap: var(--s12); }
+.trainer-row { display: flex; flex-direction: column; gap: var(--s5); align-items: center; text-align: left; }
+.trainer-photo { width: 100%; aspect-ratio: 4/5; overflow: hidden; border-radius: var(--rl); box-shadow: var(--sh2); }
 .trainer-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .6s var(--ease); }
-.trainer-card:hover .trainer-photo img { transform: scale(1.05); }
-.trainer-body { padding: var(--s5); }
-.trainer-card h3 { font-size: 1.375rem; margin-bottom: 4px; }
+.trainer-row:hover .trainer-photo img { transform: scale(1.04); }
+.trainer-body { width: 100%; }
+.trainer-body h3 { font-size: 1.5rem; margin-bottom: 4px; }
 .trainer-role { display: block; font-size: .8125rem; color: var(--m300); font-weight: 500; letter-spacing: .05em; margin-bottom: var(--s3); }
-.trainer-card p { font-size: .875rem; color: var(--wg); line-height: 1.7; margin-bottom: var(--s3); }
+.trainer-body p { font-size: .9375rem; color: var(--wg); line-height: 1.75; margin-bottom: var(--s4); }
 .trainer-tags { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: var(--s1); }
 
 /* ================================================================
@@ -638,8 +655,19 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
 
   /* Grids → two columns */
   .classes-grid  { grid-template-columns: repeat(2,1fr); }
-  .trainers-grid { grid-template-columns: repeat(2,1fr); max-width: var(--mw); }
   .gallery-grid  { grid-template-columns: repeat(2,1fr); }
+
+  /* Wellness banner → image beside text */
+  .class-feature-card { flex-direction: row; align-items: stretch; min-height: 300px; }
+  .class-feature-img  { flex: 0 0 44%; aspect-ratio: auto; }
+  .class-feature-body { flex: 1; justify-content: center; padding: var(--s8); }
+
+  /* Trainers → alternating side-by-side rows (zigzag) */
+  .trainers-list { max-width: 1000px; }
+  .trainer-row { flex-direction: row; gap: var(--s10); }
+  .trainer-row.reverse { flex-direction: row-reverse; }
+  .trainer-photo { flex: 0 0 40%; max-width: 40%; }
+  .trainer-body { flex: 1; }
   .field-row     { grid-template-columns: 1fr 1fr; }
   .footer-inner  { grid-template-columns: 1fr 1fr; gap: var(--s6); }
 
@@ -666,8 +694,9 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
   .about-sec-img { display: block; }
 
   .classes-grid  { grid-template-columns: repeat(3,1fr); }
-  .trainers-grid { grid-template-columns: repeat(3,1fr); }
+  .classes-grid.cols-4 { grid-template-columns: repeat(4,1fr); }
   .gallery-grid  { grid-template-columns: repeat(2,1fr); }
+  .trainers-list { max-width: 1080px; gap: var(--s16); }
   .other-grid    { grid-template-columns: repeat(3,1fr); }
 
   .pricing-cards { grid-template-columns: repeat(3,1fr); max-width: none; }

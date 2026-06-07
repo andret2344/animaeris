@@ -195,6 +195,15 @@ class HomeController extends AbstractController
 				'price' => 'Warsztaty',
 				'tag' => 'Warsztaty'
 			],
+			[
+				'name' => 'Pilates na macie',
+				'type' => 'premium',
+				'img' => 'pilates',
+				'orient' => 'square',
+				'desc' => 'Wzmacnia całe ciało, ze szczególnym naciskiem na mięśnie głębokie i prawidłową postawę. Spokojne tempo, precyzja ruchu, oddech i kontrola.',
+				'price' => 'od 45 zł',
+				'tag' => ''
+			],
 
 			// SOFT
 			[
@@ -309,6 +318,7 @@ class HomeController extends AbstractController
 				['time' => '17:00', 'name' => 'Aerial Yoga', 'room' => 'Sala Liliowa', 'type' => 'premium'],
 				['time' => '17:00', 'name' => 'Pole Dance Intermediate', 'room' => 'Sala Cream', 'type' => 'premium'],
 				['time' => '18:00', 'name' => 'Pole Dance Basic', 'room' => 'Sala Cream', 'type' => 'premium'],
+				['time' => '18:00', 'name' => 'Pilates na macie', 'room' => 'Sala Liliowa', 'type' => 'premium'],
 				['time' => '19:00', 'name' => 'Pole Dance Choreo', 'room' => 'Sala Cream', 'type' => 'premium'],
 			],
 			'Piątek' => [
@@ -317,7 +327,9 @@ class HomeController extends AbstractController
 				['time' => '17:00', 'name' => 'Pole Dance Basic', 'room' => 'Sala Cream', 'type' => 'premium'],
 				['time' => '18:00', 'name' => 'Mobilność i rollowanie', 'room' => 'Sala Cream', 'type' => 'soft'],
 			],
-			'Sobota' => [],
+			'Sobota' => [
+				['time' => '10:00', 'name' => 'Pilates na macie', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+			],
 			'Niedziela' => [],
 		];
 	}
@@ -426,6 +438,13 @@ class HomeController extends AbstractController
 				'img' => 'eliza',
 				'desc' => 'Tykająca bomba energetyczna, która nauczy Cię także spokoju. Trenerka Yogi i Aerial Yogi z wieloletnim doświadczeniem, organizatorka tematycznych wyjazdów relaksacyjnych. Wegetarianka i miłośniczka natury. Uwielbia podróże.',
 				'tags' => ['Aerial Yoga', 'Yoga', 'Hamaki']
+			],
+			[
+				'name' => 'Klaudia Dymek',
+				'role' => 'Instruktorka Pilatesu & Body&Mind',
+				'img' => 'klaudia',
+				'desc' => 'Instruktorka pilatesu ciągle rozwijająca się w obszarze body&mind i chętnie testująca różne formy aktywności. Na zajęciach łączy swobodną atmosferę z precyzją i kontrolą ruchu, dbając o uśmiech i dobre samopoczucie. Wie, że każdy kiedyś zaczynał, dlatego zależy jej na komforcie i pewności na macie.',
+				'tags' => ['Pilates na macie', 'Body & Mind', 'Mobilność']
 			],
 		];
 	}

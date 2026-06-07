@@ -1,5 +1,26 @@
 {% extends 'base.html.twig' %}
 
+{% macro class_card(c, i) %}
+	<div
+		class="class-card"
+		data-ani="up"
+		data-delay="{{ (i % 4) * 80 }}">
+		<div class="class-img {{ c.orient }}">
+			<img
+				src="/images/{{ c.img }}.jpg"
+				alt="{{ c.name }}"
+				loading="lazy">
+			<span class="class-badge {{ c.type }}">{{ c.type|upper }}</span>
+			{% if c.tag %}<span class="class-tag">{{ c.tag }}</span>{% endif %}
+		</div>
+		<div class="class-body">
+			<h3>{{ c.name }}</h3>
+			<p>{{ c.desc }}</p>
+			<span class="class-price">{{ c.price }}</span>
+		</div>
+	</div>
+{% endmacro %}
+
 {% block content %}
 
 	{# ===== HERO ===== #}
@@ -64,7 +85,7 @@
 				data-delay="100">
 				<span
 					class="stat-num"
-					data-count="12">12</span>
+					data-count="13">13</span>
 				<span class="stat-label">Rodzajów zajęć</span>
 			</div>
 			<div
@@ -73,7 +94,7 @@
 				data-delay="200">
 				<span
 					class="stat-num"
-					data-count="3">3</span>
+					data-count="4">4</span>
 				<span class="stat-label">Certyfikowane trenerki</span>
 			</div>
 			<div
@@ -182,27 +203,58 @@
 			<h2>Co oferujemy</h2>
 			<p class="section-desc">Od regeneracji po sporty powietrzne - dla każdego poziomu zaawansowania</p>
 		</div>
-		<div class="classes-grid">
-			{% for c in classes %}
-				<div
-					class="class-card"
-					data-ani="up"
-					data-delay="{{ (loop.index0 % 4) * 80 }}">
-					<div class="class-img {{ c.orient }}">
+		{% set wellness = classes|filter(c => c.type == 'wellness')|first %}
+		{% set softClasses = classes|filter(c => c.type == 'soft') %}
+		{% set premiumClasses = classes|filter(c => c.type == 'premium') %}
+
+		{# WELLNESS - feature banner #}
+		{% if wellness %}
+			<div
+				class="class-feature"
+				data-ani="up">
+				<article class="class-feature-card">
+					<div class="class-feature-img">
 						<img
-							src="/images/{{ c.img }}.jpg"
-							alt="{{ c.name }}"
+							src="/images/{{ wellness.img }}.jpg"
+							alt="{{ wellness.name }}"
 							loading="lazy">
-						<span class="class-badge {{ c.type }}">{{ c.type|upper }}</span>
-						{% if c.tag %}<span class="class-tag">{{ c.tag }}</span>{% endif %}
+						<span class="class-badge {{ wellness.type }}">{{ wellness.type|upper }}</span>
 					</div>
-					<div class="class-body">
-						<h3>{{ c.name }}</h3>
-						<p>{{ c.desc }}</p>
-						<span class="class-price">{{ c.price }}</span>
+					<div class="class-feature-body">
+						<h3>{{ wellness.name }}</h3>
+						<p>{{ wellness.desc }}</p>
+						<span class="class-price">{{ wellness.price }}</span>
 					</div>
-				</div>
-			{% endfor %}
+				</article>
+			</div>
+		{% endif %}
+
+		{# SOFT #}
+		<div class="class-group">
+			<div
+				class="class-group-head"
+				data-ani="up">
+				<span class="eyebrow">Zajęcia SOFT</span>
+			</div>
+			<div class="classes-grid cols-4">
+				{% for c in softClasses %}
+					{{ _self.class_card(c, loop.index0) }}
+				{% endfor %}
+			</div>
+		</div>
+
+		{# PREMIUM #}
+		<div class="class-group">
+			<div
+				class="class-group-head"
+				data-ani="up">
+				<span class="eyebrow">Zajęcia PREMIUM</span>
+			</div>
+			<div class="classes-grid cols-4">
+				{% for c in premiumClasses %}
+					{{ _self.class_card(c, loop.index0) }}
+				{% endfor %}
+			</div>
 		</div>
 	</section>
 
@@ -217,19 +269,20 @@
 			<h2>Poznaj trenerki</h2>
 			<p class="section-desc">Pasjonatki, które przeprowadzą Cię przez każdy etap przygody</p>
 		</div>
-		<div class="trainers-grid">
+		<div class="trainers-list">
 			{% for trainer in trainers %}
-				<div
-					class="trainer-card"
-					data-ani="up"
-					data-delay="{{ loop.index0 * 100 }}">
-					<div class="trainer-photo">
+				<article class="trainer-row{{ loop.index0 is odd ? ' reverse' : '' }}">
+					<div
+						class="trainer-photo"
+						data-ani="{{ loop.index0 is odd ? 'left' : 'right' }}">
 						<img
 							src="/images/{{ trainer.img }}.jpg"
 							alt="{{ trainer.name }}"
 							loading="lazy">
 					</div>
-					<div class="trainer-body">
+					<div
+						class="trainer-body"
+						data-ani="{{ loop.index0 is odd ? 'right' : 'left' }}">
 						<h3>{{ trainer.name }}</h3>
 						<span class="trainer-role">{{ trainer.role }}</span>
 						<p>{{ trainer.desc }}</p>
@@ -237,7 +290,7 @@
 							{% for tag in trainer.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
 						</div>
 					</div>
-				</div>
+				</article>
 			{% endfor %}
 		</div>
 	</section>
@@ -695,6 +748,7 @@
 								<option>Aerial Hoop</option>
 								<option>Aerial Yoga</option>
 								<option>Hamaki technika</option>
+								<option>Pilates na macie</option>
 								<option>Samoobrona</option>
 							</optgroup>
 							<optgroup label="Pozostałe">
