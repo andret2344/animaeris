@@ -10,7 +10,6 @@
 				src="/images/{{ c.img }}.jpg"
 				alt="{{ c.name }}"
 				loading="lazy">
-			<span class="class-badge {{ c.type }}">{{ c.type|upper }}</span>
 			{% if c.tag %}<span class="class-tag">{{ c.tag }}</span>{% endif %}
 		</div>
 		<div class="class-body">
@@ -218,7 +217,6 @@
 							src="/images/{{ wellness.img }}.jpg"
 							alt="{{ wellness.name }}"
 							loading="lazy">
-						<span class="class-badge {{ wellness.type }}">{{ wellness.type|upper }}</span>
 					</div>
 					<div class="class-feature-body">
 						<h3>{{ wellness.name }}</h3>
@@ -349,7 +347,7 @@
 								class="sched-book">Zapisz się</a>
 						</div>
 					{% else %}
-						<p class="sched-empty">Tego dnia nie prowadzimy zajęć. Zapraszamy od poniedziałku do piątku.</p>
+						<p class="sched-empty">Tego dnia nie prowadzimy zajęć. Zapraszamy w inne dni.</p>
 					{% endfor %}
 				</div>
 			{% endfor %}
@@ -548,7 +546,7 @@
 						</button>
 						<div
 							class="faq-a"
-							id="fa-{{ loop.index }}"><p>{{ item.a }}</p></div>
+							id="fa-{{ loop.index }}"><div class="faq-a-inner"><p>{{ item.a }}</p></div></div>
 					</div>
 				{% endfor %}
 			</div>
