@@ -355,7 +355,7 @@ class HomeController extends AbstractController
 					['label' => 'Karnet 4 wejścia', 'price' => '175 zł'],
 					['label' => 'Karnet 8 wejść', 'price' => '320 zł'],
 				],
-				'note' => 'Z kartą sportową: dopłata sprzętowa 20 zł',
+				'note' => 'Z kartą sportową: dopłata sprzętowa 15 zł',
 			],
 			'membership' => [
 				'name' => 'Członkostwo',
@@ -396,10 +396,10 @@ class HomeController extends AbstractController
 				'q' => 'Jak działają karnety?',
 				'a' => 'Karnety ważne są 30 dni od pierwszego wejścia. Możesz z nich korzystać na dowolnych zajęciach z danej kategorii (SOFT lub PREMIUM).'
 			],
-//			[
-//				'q' => 'Czy akceptujecie karty sportowe?',
-//				'a' => 'Tak! Z kartą sportową obowiązuje dopłata sprzętowa: 10 zł przy zajęciach SOFT i 20 zł przy zajęciach PREMIUM.'
-//			],
+			[
+				'q' => 'Czy akceptujecie karty sportowe?',
+				'a' => 'Tak, honorujemy kartę Medicover Sport. Obowiązuje dopłata sprzętowa 10 zł przy zajęciach SOFT i 15 zł przy zajęciach PREMIUM.'
+			],
 			[
 				'q' => 'Ile osób jest na zajęciach?',
 				'a' => 'Dbamy o komfort i bezpieczeństwo - grupy są kameralne, maksymalnie 10 osób. Trenerka może poświęcić uwagę każdej osobie.'
