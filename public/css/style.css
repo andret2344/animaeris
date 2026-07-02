@@ -283,48 +283,43 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
 .class-img.portrait  { aspect-ratio: 3/4; }
 .class-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
 .class-card:hover .class-img img { transform: scale(1.05); }
-.class-badge {
-  position: absolute; top: var(--s3); right: var(--s3); overflow: hidden;
-  display: inline-flex; align-items: center; gap: .45em;
-  padding: .42rem .72rem; border-radius: var(--pill);
-  font-family: var(--fb); font-size: .625rem; font-weight: 600;
-  letter-spacing: .16em; text-transform: uppercase; line-height: 1;
-  -webkit-backdrop-filter: blur(10px) saturate(1.3); backdrop-filter: blur(10px) saturate(1.3);
-  box-shadow: var(--sh2);
-}
-.class-badge::before { content: ''; flex: none; width: 6px; height: 6px; border-radius: 50%; }
-.class-badge.soft     { background: rgba(253,250,247,.78); color: var(--m600); border: 1px solid rgba(133,102,96,.16); }
-.class-badge.soft::before { background: var(--m300); }
-.class-badge.wellness { background: linear-gradient(135deg, var(--m300), var(--m500)); color: var(--w); border: 1px solid rgba(255,255,255,.22); }
-.class-badge.wellness::before { background: var(--m100); }
-.class-badge.premium  { background: linear-gradient(135deg, rgba(110,80,74,.92), rgba(28,26,25,.9)); color: #fff; border: 1px solid rgba(255,255,255,.2); }
-.class-badge.premium::before { width: 7px; height: 7px; border-radius: 1.5px; transform: rotate(45deg); background: var(--m100); box-shadow: 0 0 6px rgba(212,192,187,.85); }
-.class-badge.premium::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.4) 50%, transparent 65%);
-  transform: translateX(-130%);
-}
-.class-card:hover .class-badge.premium::after { transform: translateX(130%); transition: transform .8s var(--ease); }
 .class-tag { position: absolute; top: var(--s2); left: var(--s2); padding: .25rem .625rem; border-radius: var(--pill); font-size: .6875rem; font-weight: 600; letter-spacing: .06em; background: rgba(255,255,255,.92); color: var(--m600); box-shadow: var(--sh1); }
 .class-body { display: flex; flex-direction: column; flex: 1 1 auto; padding: var(--s4); }
 .class-body h3 { font-size: 1.25rem; margin-bottom: var(--s1); }
 .class-body p  { font-size: .875rem; color: var(--wg); line-height: 1.65; margin-bottom: var(--s3); }
 .class-price { margin-top: auto; font-size: .8125rem; font-weight: 600; color: var(--m300); letter-spacing: .04em; }
 
+/* Class groups (Wellness / SOFT / PREMIUM) */
+.class-group { margin-top: var(--s10); }
+.class-group-head { max-width: var(--mw); margin: 0 auto var(--s5); padding: 0 var(--s4); display: flex; align-items: center; gap: var(--s3); }
+.class-group-head .eyebrow { margin-bottom: 0; font-size: .8125rem; }
+.class-group-head::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--b300), transparent); }
+
+/* Wellness feature banner */
+.class-feature { max-width: var(--mw); margin: 0 auto; padding: 0 var(--s4); }
+.class-feature-card { display: flex; flex-direction: column; background: var(--b200); border: 1px solid var(--b300); border-radius: var(--rl); overflow: hidden; box-shadow: var(--sh2); transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
+.class-feature-card:hover { transform: translateY(-6px); box-shadow: var(--sh4); }
+.class-feature-img { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+.class-feature-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.class-feature-card:hover .class-feature-img img { transform: scale(1.04); }
+.class-feature-body { display: flex; flex-direction: column; gap: var(--s2); padding: var(--s5); }
+.class-feature-body h3 { font-size: 1.5rem; }
+.class-feature-body p { color: var(--wg); line-height: 1.7; }
+.class-feature-body .class-price { margin-top: var(--s1); }
+
 /* ================================================================
    TRAINERS
    ================================================================ */
 .trainers { padding: var(--sp) 0; background: var(--b100); }
-.trainers-grid { max-width: 400px; margin: 0 auto; padding: 0 var(--s4); display: grid; grid-template-columns: 1fr; gap: var(--s6); }
-.trainer-card { text-align: left; background: var(--b200); border: 1px solid var(--b300); border-radius: var(--rl); overflow: hidden; box-shadow: var(--sh2); transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
-.trainer-card:hover { transform: translateY(-6px); box-shadow: var(--sh4); }
-.trainer-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; }
+.trainers-list { max-width: 440px; margin: 0 auto; padding: 0 var(--s4); display: flex; flex-direction: column; gap: var(--s12); }
+.trainer-row { display: flex; flex-direction: column; gap: var(--s5); align-items: center; text-align: left; }
+.trainer-photo { width: 100%; aspect-ratio: 4/5; overflow: hidden; border-radius: var(--rl); box-shadow: var(--sh2); }
 .trainer-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .6s var(--ease); }
-.trainer-card:hover .trainer-photo img { transform: scale(1.05); }
-.trainer-body { padding: var(--s5); }
-.trainer-card h3 { font-size: 1.375rem; margin-bottom: 4px; }
+.trainer-row:hover .trainer-photo img { transform: scale(1.04); }
+.trainer-body { width: 100%; }
+.trainer-body h3 { font-size: 1.5rem; margin-bottom: 4px; }
 .trainer-role { display: block; font-size: .8125rem; color: var(--m300); font-weight: 500; letter-spacing: .05em; margin-bottom: var(--s3); }
-.trainer-card p { font-size: .875rem; color: var(--wg); line-height: 1.7; margin-bottom: var(--s3); }
+.trainer-body p { font-size: .9375rem; color: var(--wg); line-height: 1.75; margin-bottom: var(--s4); }
 .trainer-tags { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: var(--s1); }
 
 /* ================================================================
@@ -490,9 +485,10 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
 .faq-q:hover, .faq-q[aria-expanded="true"] { color: var(--m300); }
 .faq-chevron { width: 20px; height: 20px; flex-shrink: 0; color: var(--m400); transition: transform var(--dur) var(--ease); }
 .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
-.faq-a { max-height: 0; overflow: hidden; transition: max-height .5s var(--ease), padding var(--dur) var(--ease); }
-.faq-a.open { max-height: 400px; padding: 0 var(--s5) var(--s4); }
-.faq-a p { font-size: .9375rem; color: var(--wg); line-height: 1.75; }
+.faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s var(--ease); }
+.faq-a.open { grid-template-rows: 1fr; }
+.faq-a-inner { overflow: hidden; min-height: 0; }
+.faq-a p { margin: 0; padding: 0 var(--s5) var(--s4); font-size: .9375rem; color: var(--wg); line-height: 1.75; }
 
 /* ================================================================
    CONTACT
@@ -638,8 +634,19 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
 
   /* Grids → two columns */
   .classes-grid  { grid-template-columns: repeat(2,1fr); }
-  .trainers-grid { grid-template-columns: repeat(2,1fr); max-width: var(--mw); }
   .gallery-grid  { grid-template-columns: repeat(2,1fr); }
+
+  /* Wellness banner → image beside text */
+  .class-feature-card { flex-direction: row; align-items: stretch; min-height: 300px; }
+  .class-feature-img  { flex: 0 0 44%; aspect-ratio: auto; }
+  .class-feature-body { flex: 1; justify-content: center; padding: var(--s8); }
+
+  /* Trainers → alternating side-by-side rows (zigzag) */
+  .trainers-list { max-width: 1000px; }
+  .trainer-row { flex-direction: row; gap: var(--s10); }
+  .trainer-row.reverse { flex-direction: row-reverse; }
+  .trainer-photo { flex: 0 0 40%; max-width: 40%; }
+  .trainer-body { flex: 1; }
   .field-row     { grid-template-columns: 1fr 1fr; }
   .footer-inner  { grid-template-columns: 1fr 1fr; gap: var(--s6); }
 
@@ -666,8 +673,9 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
   .about-sec-img { display: block; }
 
   .classes-grid  { grid-template-columns: repeat(3,1fr); }
-  .trainers-grid { grid-template-columns: repeat(3,1fr); }
+  .classes-grid.cols-4 { grid-template-columns: repeat(4,1fr); }
   .gallery-grid  { grid-template-columns: repeat(2,1fr); }
+  .trainers-list { max-width: 1080px; gap: var(--s16); }
   .other-grid    { grid-template-columns: repeat(3,1fr); }
 
   .pricing-cards { grid-template-columns: repeat(3,1fr); max-width: none; }

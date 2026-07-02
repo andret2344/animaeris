@@ -214,6 +214,15 @@ class HomeController extends AbstractController
 				'price' => 'Warsztaty',
 				'tag' => 'Warsztaty'
 			],
+			[
+				'name' => 'Pilates na macie',
+				'type' => 'premium',
+				'img' => 'pilates',
+				'orient' => 'square',
+				'desc' => 'Wzmacnia całe ciało, ze szczególnym naciskiem na mięśnie głębokie i prawidłową postawę. Spokojne tempo, precyzja ruchu, oddech i kontrola.',
+				'price' => 'od 45 zł',
+				'tag' => ''
+			],
 
 			// SOFT
 			[
@@ -328,6 +337,7 @@ class HomeController extends AbstractController
 				['time' => '17:00', 'name' => 'Aerial Yoga', 'room' => 'Sala Liliowa', 'type' => 'premium'],
 				['time' => '17:00', 'name' => 'Pole Dance Intermediate', 'room' => 'Sala Cream', 'type' => 'premium'],
 				['time' => '18:00', 'name' => 'Pole Dance Basic', 'room' => 'Sala Cream', 'type' => 'premium'],
+				['time' => '18:00', 'name' => 'Pilates na macie', 'room' => 'Sala Liliowa', 'type' => 'premium'],
 				['time' => '19:00', 'name' => 'Pole Dance Choreo', 'room' => 'Sala Cream', 'type' => 'premium'],
 			],
 			'Piątek' => [
@@ -336,7 +346,9 @@ class HomeController extends AbstractController
 				['time' => '17:00', 'name' => 'Pole Dance Basic', 'room' => 'Sala Cream', 'type' => 'premium'],
 				['time' => '18:00', 'name' => 'Mobilność i rollowanie', 'room' => 'Sala Cream', 'type' => 'soft'],
 			],
-			'Sobota' => [],
+			'Sobota' => [
+				['time' => '10:00', 'name' => 'Pilates na macie', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+			],
 			'Niedziela' => [],
 		];
 	}
@@ -362,7 +374,7 @@ class HomeController extends AbstractController
 					['label' => 'Karnet 4 wejścia', 'price' => '175 zł'],
 					['label' => 'Karnet 8 wejść', 'price' => '320 zł'],
 				],
-				'note' => 'Z kartą sportową: dopłata sprzętowa 20 zł',
+				'note' => 'Z kartą sportową: dopłata sprzętowa 15 zł',
 			],
 			'membership' => [
 				'name' => 'Członkostwo',
@@ -403,10 +415,10 @@ class HomeController extends AbstractController
 				'q' => 'Jak działają karnety?',
 				'a' => 'Karnety ważne są 30 dni od pierwszego wejścia. Możesz z nich korzystać na dowolnych zajęciach z danej kategorii (SOFT lub PREMIUM).'
 			],
-//			[
-//				'q' => 'Czy akceptujecie karty sportowe?',
-//				'a' => 'Tak! Z kartą sportową obowiązuje dopłata sprzętowa: 10 zł przy zajęciach SOFT i 20 zł przy zajęciach PREMIUM.'
-//			],
+			[
+				'q' => 'Czy akceptujecie karty sportowe?',
+				'a' => 'Tak, honorujemy kartę Medicover Sport. Obowiązuje dopłata sprzętowa 10 zł przy zajęciach SOFT i 15 zł przy zajęciach PREMIUM.'
+			],
 			[
 				'q' => 'Ile osób jest na zajęciach?',
 				'a' => 'Dbamy o komfort i bezpieczeństwo - grupy są kameralne, maksymalnie 10 osób. Trenerka może poświęcić uwagę każdej osobie.'
@@ -445,6 +457,13 @@ class HomeController extends AbstractController
 				'img' => 'eliza',
 				'desc' => 'Tykająca bomba energetyczna, która nauczy Cię także spokoju. Trenerka Yogi i Aerial Yogi z wieloletnim doświadczeniem, organizatorka tematycznych wyjazdów relaksacyjnych. Wegetarianka i miłośniczka natury. Uwielbia podróże.',
 				'tags' => ['Aerial Yoga', 'Yoga', 'Hamaki']
+			],
+			[
+				'name' => 'Klaudia Dymek',
+				'role' => 'Instruktorka Pilatesu & Body&Mind',
+				'img' => 'klaudia',
+				'desc' => 'Instruktorka pilatesu ciągle rozwijająca się w obszarze body&mind i chętnie testująca różne formy aktywności. Na zajęciach łączy swobodną atmosferę z precyzją i kontrolą ruchu, dbając o uśmiech i dobre samopoczucie. Wie, że każdy kiedyś zaczynał, dlatego zależy jej na komforcie i pewności na macie.',
+				'tags' => ['Pilates na macie', 'Body & Mind', 'Mobilność']
 			],
 		];
 	}
