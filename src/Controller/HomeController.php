@@ -24,6 +24,25 @@ class HomeController extends AbstractController
 	#[Route('/kontakt', name: 'contact', methods: ['POST'])]
 	public function contact(Request $request, MailerInterface $mailer, LoggerInterface $logger): Response
 	{
+		// Antyspam: honeypot (ukryte pole, które wypełniają tylko boty) oraz
+		// pułapka czasowa (formularz wysłany zbyt szybko po załadowaniu strony).
+		// Boty odsyłamy na stronę "sukcesu" bez wysyłki maila, żeby nie próbowały ponownie.
+		$honeypot = trim((string)$request->request->get('website', ''));
+		$renderedAt = (int)$request->request->get('_ts', '0');
+		$tooFast = $renderedAt <= 0 || (time() - $renderedAt) < 3;
+
+		if ($honeypot !== '' || $tooFast) {
+			$logger->info('Odrzucono zgłoszenie kontaktowe jako spam.', [
+				'honeypot' => $honeypot !== '',
+				'too_fast' => $tooFast,
+				'ip' => $request->getClientIp(),
+			]);
+
+			return $this->render('home/contact_success.html.twig', [
+				'name' => trim((string)$request->request->get('name', '')),
+			]);
+		}
+
 		$input = [
 			'name' => trim((string)$request->request->get('name', '')),
 			'email' => trim((string)$request->request->get('email', '')),
