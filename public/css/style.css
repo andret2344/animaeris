@@ -555,6 +555,16 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
 .cta-content p  { color: rgba(255,255,255,.75); font-size: 1.0625rem; margin-bottom: var(--s5); }
 
 /* ================================================================
+   PARTNERS / SPORT CARDS
+   ================================================================ */
+.partners { background: var(--b200); padding: var(--s6) var(--s4); }
+.partners-inner { max-width: var(--mw); margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: var(--s4); }
+.partners-title { font-family: var(--fb); font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--wg); text-align: center; }
+.partner-list { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--s3) var(--s6); }
+.partner-item { display: flex; align-items: center; }
+.partner-logo { height: var(--partner-h, 38px); width: auto; opacity: .9; }
+
+/* ================================================================
    FOOTER
    ================================================================ */
 .footer { background: var(--ink); color: rgba(255,255,255,.7); padding-top: var(--s12); }

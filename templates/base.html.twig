@@ -102,6 +102,37 @@
 
 <main>{% block content %}{% endblock %}</main>
 
+{% set sport_cards = [
+	{ name: 'Medicover Sport', logo: 'medicover-sport-white.svg', width: 232, height: 46 },
+	{ name: 'PZU Sport', logo: 'pzu-sport-mark-white.png', width: 591, height: 158, size: 34, hidden: true }
+] %}
+{% set visible_sport_cards = sport_cards|filter(card => not (card.hidden|default(false))) %}
+{% if visible_sport_cards is not empty %}
+	<section
+		class="partners"
+		aria-labelledby="partners-title">
+		<div class="partners-inner">
+			<h2
+				id="partners-title"
+				class="partners-title">Honorujemy karty sportowe</h2>
+			<ul class="partner-list">
+				{% for card in visible_sport_cards %}
+					<li class="partner-item">
+						<img
+							src="/images/partners/{{ card.logo }}"
+							alt="{{ card.name }}"
+							class="partner-logo"
+							width="{{ card.width }}"
+							height="{{ card.height }}"
+							style="--partner-h: {{ card.size|default(38) }}px"
+							loading="lazy">
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
+{% endif %}
+
 <footer class="footer">
 	<div class="footer-inner">
 		<div class="footer-brand">

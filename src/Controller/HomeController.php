@@ -24,9 +24,9 @@ class HomeController extends AbstractController
 	#[Route('/kontakt', name: 'contact', methods: ['POST'])]
 	public function contact(Request $request, MailerInterface $mailer, LoggerInterface $logger): Response
 	{
-		// Antyspam: honeypot (ukryte pole, które wypełniają tylko boty) oraz
-		// pułapka czasowa (formularz wysłany zbyt szybko po załadowaniu strony).
-		// Boty odsyłamy na stronę "sukcesu" bez wysyłki maila, żeby nie próbowały ponownie.
+		// Anti-spam: a honeypot field only bots fill in, plus a time trap for
+		// submissions sent too soon after the page loaded. Bots get the success
+		// page without any mail being sent, so they do not retry.
 		$honeypot = trim((string)$request->request->get('website', ''));
 		$renderedAt = (int)$request->request->get('_ts', '0');
 		$tooFast = $renderedAt <= 0 || (time() - $renderedAt) < 3;
@@ -75,11 +75,14 @@ class HomeController extends AbstractController
 	}
 
 	/**
+	 * Shared summary block - identical in the mail to the studio and in the
+	 * confirmation to the sender, so both mails keep the same structure.
+	 *
 	 * @param array<string, mixed> $input
 	 */
-	private function buildContactEmail(array $input): Email
+	private function contactSummary(array $input): string
 	{
-		$lines = [
+		return implode("\n", [
 			'Imię i nazwisko: ' . $input['name'],
 			'E-mail: ' . $input['email'],
 			'Telefon: ' . ($input['phone'] !== '' ? $input['phone'] : '-'),
@@ -87,14 +90,20 @@ class HomeController extends AbstractController
 			'',
 			'Wiadomość:',
 			$input['message'],
-		];
+		]);
+	}
 
+	/**
+	 * @param array<string, mixed> $input
+	 */
+	private function buildContactEmail(array $input): Email
+	{
 		return new Email()
 			->from(self::CONTACT_RECIPIENT)
 			->to(self::CONTACT_RECIPIENT)
 			->replyTo($input['email'])
 			->subject('Formularz kontaktowy - ' . $input['name'])
-			->text(implode("\n", $lines));
+			->text($this->contactSummary($input));
 	}
 
 	/**
@@ -102,28 +111,24 @@ class HomeController extends AbstractController
 	 */
 	private function buildConfirmationEmail(array $input): Email
 	{
-		$lines = [
+		$body = implode("\n", [
 			'Cześć ' . $input['name'] . ',',
 			'',
 			'dziękujemy za wiadomość! Otrzymaliśmy ją i odezwiemy się najszybciej, jak to możliwe.',
 			'Poniżej kopia tego, co do nas wysłałaś/eś:',
 			'',
-			'Telefon: ' . ($input['phone'] !== '' ? $input['phone'] : '-'),
-			'Zajęcia: ' . ($input['class'] !== '' ? $input['class'] : '-'),
-			'',
-			'Wiadomość:',
-			$input['message'],
+			$this->contactSummary($input),
 			'',
 			'Pozdrawiamy,',
 			'Animaeris Studio',
-		];
+		]);
 
 		return new Email()
 			->from(self::CONTACT_RECIPIENT)
 			->to($input['email'])
 			->replyTo(self::CONTACT_RECIPIENT)
 			->subject('Potwierdzenie - otrzymaliśmy Twoją wiadomość')
-			->text(implode("\n", $lines));
+			->text($body);
 	}
 
 	/**
@@ -175,7 +180,6 @@ class HomeController extends AbstractController
 	private function getClasses(): array
 	{
 		return [
-			// WELLNESS
 			[
 				'name' => 'Strefa Wellness',
 				'type' => 'wellness',
@@ -186,7 +190,6 @@ class HomeController extends AbstractController
 				'tag' => ''
 			],
 
-			// PREMIUM
 			[
 				'name' => 'Aerial Hoop',
 				'type' => 'premium',
@@ -224,7 +227,6 @@ class HomeController extends AbstractController
 				'tag' => ''
 			],
 
-			// SOFT
 			[
 				'name' => 'Rozciąganie',
 				'type' => 'soft',
