@@ -419,7 +419,7 @@ class HomeController extends AbstractController
 			],
 			[
 				'q' => 'Czy akceptujecie karty sportowe?',
-				'a' => 'Tak, honorujemy kartę Medicover Sport. Obowiązuje dopłata sprzętowa 10 zł przy zajęciach SOFT i 15 zł przy zajęciach PREMIUM.'
+				'a' => 'Tak, honorujemy karty Medicover Sport oraz PZU Sport. Obowiązuje dopłata sprzętowa 10 zł przy zajęciach SOFT i 15 zł przy zajęciach PREMIUM.'
 			],
 			[
 				'q' => 'Ile osób jest na zajęciach?',
@@ -466,6 +466,13 @@ class HomeController extends AbstractController
 				'img' => 'klaudia',
 				'desc' => 'Instruktorka pilatesu ciągle rozwijająca się w obszarze body&mind i chętnie testująca różne formy aktywności. Na zajęciach łączy swobodną atmosferę z precyzją i kontrolą ruchu, dbając o uśmiech i dobre samopoczucie. Wie, że każdy kiedyś zaczynał, dlatego zależy jej na komforcie i pewności na macie.',
 				'tags' => ['Pilates na macie', 'Body & Mind', 'Mobilność']
+			],
+			[
+				'name' => 'Amelia Bystrek',
+				'role' => 'Instruktorka Jazz & Commercial',
+				'img' => 'amelia',
+				'desc' => 'Tancerka z wieloletnim doświadczeniem. Taniec jest jej pasją, która od lat daje jej ogromną radość i pozwala wyrażać siebie. Uwielbia dzielić się swoją energią z innymi i pomagać w rozwijaniu umiejętności. Na zajęciach skupia się na technice i jakości ruchu, dbając jednocześnie o dobrą atmosferę, żeby każdy czerpał z tańca jak najwięcej przyjemności.',
+				'tags' => ['Jazz', 'Commercial', 'Technika ruchu']
 			],
 		];
 	}

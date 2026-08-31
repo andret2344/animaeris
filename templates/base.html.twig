@@ -104,7 +104,7 @@
 
 {% set sport_cards = [
 	{ name: 'Medicover Sport', logo: 'medicover-sport-white.svg', width: 232, height: 46 },
-	{ name: 'PZU Sport', logo: 'pzu-sport-mark-white.png', width: 591, height: 158, size: 34, hidden: true }
+	{ name: 'PZU Sport', logo: 'pzu-sport-mark-white.png', width: 591, height: 158, size: 34 }
 ] %}
 {% set visible_sport_cards = sport_cards|filter(card => not (card.hidden|default(false))) %}
 {% if visible_sport_cards is not empty %}
