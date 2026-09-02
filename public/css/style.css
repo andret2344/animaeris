@@ -368,6 +368,7 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
 .sched-row.room-other   { border-left-color: rgba(255,255,255,.35); }
 .sched-time { font-family: var(--fh); font-size: 1.125rem; color: var(--m200); }
 .sched-info strong { display: block; font-weight: 500; color: var(--w); font-size: .9375rem; }
+.sched-from { margin-left: var(--s3); font-weight: 400; font-size: .8125rem; color: rgba(255,255,255,.55); }
 
 .sched-meta { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; }
 .sched-room {
@@ -393,6 +394,8 @@ h1,h2,h3,h4 { font-family: var(--fh); font-weight: 400; line-height: 1.15; color
 .sched-badge.soft::before { background: rgba(255,255,255,.6); }
 .sched-badge.premium { background: linear-gradient(135deg, var(--m400), var(--m500)); color: #fff; }
 .sched-badge.premium::before { width: 6px; height: 6px; border-radius: 1.5px; transform: rotate(45deg); background: var(--m100); }
+.sched-badge.note    { background: transparent; color: rgba(255,255,255,.62); border: 1px dashed rgba(255,255,255,.22); letter-spacing: .08em; text-transform: none; }
+.sched-badge.note::before { display: none; }
 .sched-book { padding: .375rem 1rem; border-radius: var(--pill); border: 1px solid rgba(155,126,122,.55); font-size: .75rem; font-weight: 500; color: var(--m200); transition: all var(--dur) var(--ease); white-space: nowrap; }
 .sched-book:hover { background: var(--m400); border-color: var(--m400); color: var(--w); }
 

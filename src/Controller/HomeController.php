@@ -15,6 +15,9 @@ class HomeController extends AbstractController
 {
 	private const CONTACT_RECIPIENT = 'animaeris.studio@gmail.com';
 
+	/** Data startu Aerial Jamu - po niej znika dopisek "od 12.09" przy nazwie. */
+	private const AERIAL_JAM_START = '2026-09-12';
+
 	#[Route('/', name: 'home', methods: ['GET'])]
 	public function index(): Response
 	{
@@ -183,7 +186,7 @@ class HomeController extends AbstractController
 			[
 				'name' => 'Strefa Wellness',
 				'type' => 'wellness',
-				'img' => 'foto3',
+				'img' => 'masaz',
 				'orient' => 'square',
 				'desc' => 'Masaż relaksacyjny, kinesiotaping i praca z ciałem - przestrzeń stworzona do regeneracji ciała i ducha.',
 				'price' => 'Rezerwacje: Booksy',
@@ -193,7 +196,7 @@ class HomeController extends AbstractController
 			[
 				'name' => 'Aerial Hoop',
 				'type' => 'premium',
-				'img' => 'foto4',
+				'img' => 'aerial-hoop',
 				'orient' => 'square',
 				'desc' => 'Koło cyrkowe - łączy siłę, gibkość i artyzm. Idealne dla osób, które marzą o efektownych figurach w powietrzu.',
 				'price' => 'od 45 zł',
@@ -202,7 +205,7 @@ class HomeController extends AbstractController
 			[
 				'name' => 'Aerial Yoga',
 				'type' => 'premium',
-				'img' => 'foto5',
+				'img' => 'hamaki',
 				'orient' => 'square',
 				'desc' => 'Joga w hamaku - odciąża kręgosłup, poprawia elastyczność i daje poczucie lekkości oraz relaksu.',
 				'price' => 'od 45 zł',
@@ -211,7 +214,7 @@ class HomeController extends AbstractController
 			[
 				'name' => 'Samoobrona',
 				'type' => 'premium',
-				'img' => 'foto6',
+				'img' => 'samoobrona',
 				'orient' => 'square',
 				'desc' => 'Zajęcia w formie warsztatów, w nieregularnych terminach, w edycjach: Open, dla kobiet, dla seniorów.',
 				'price' => 'Warsztaty',
@@ -282,20 +285,56 @@ class HomeController extends AbstractController
 				'tag' => ''
 			],
 			[
-				'name' => 'Cardio Dance',
+				'name' => 'Cardio + Tabata',
 				'type' => 'soft',
-				'img' => 'cardio-dance',
+				'img' => 'cardio-tabata',
 				'orient' => 'square',
-				'desc' => 'Energiczne zajęcia taneczno-cardio. Spalisz kalorie i wyjdziesz z uśmiechem.',
+				'desc' => 'Dynamiczny trening na krążenie i kondycję - rytmiczne ćwiczenia, sporo spalonych kalorii i zastrzyk energii.',
 				'price' => 'od 35 zł',
 				'tag' => ''
 			],
 			[
-				'name' => 'Zajęcia usprawniające',
+				'name' => 'Power Stretching',
 				'type' => 'soft',
-				'img' => 'usprawnianie',
+				'img' => 'power-stretching',
 				'orient' => 'square',
-				'desc' => 'Ćwiczenia dla seniorów i osób po kontuzjach, które chcą wrócić do pełni sprawności fizycznej.',
+				'desc' => 'Joga, stretching funkcjonalny i wzmacnianie w jednym - budujesz siłę i mobilność w pełnych zakresach ruchu.',
+				'price' => 'od 35 zł',
+				'tag' => ''
+			],
+			[
+				'name' => 'Jędrne pośladki',
+				'type' => 'soft',
+				'img' => 'jedrne-posladki',
+				'orient' => 'square',
+				'desc' => 'Intensywny trening dolnych partii ciała - modeluje i wzmacnia pośladki, uda oraz brzuch.',
+				'price' => 'od 35 zł',
+				'tag' => ''
+			],
+			[
+				'name' => 'Commercial Dance',
+				'type' => 'soft',
+				'img' => 'commercial-dance',
+				'orient' => 'square',
+				'desc' => 'Taniec rodem z teledysków - wybuchowa mieszanka hip-hopu, dancehallu i high heels. Performance, ekspresja i zabawa w rytm hitów.',
+				'price' => 'od 35 zł',
+				'tag' => ''
+			],
+			[
+				'name' => 'Jazz',
+				'type' => 'soft',
+				'img' => 'jazz',
+				'orient' => 'square',
+				'desc' => 'Technika baletowa spotyka rytm i ekspresję - izolacje, płynność ruchu i mocne, energetyczne akcenty.',
+				'price' => 'od 35 zł',
+				'tag' => ''
+			],
+			[
+				'name' => 'Floorwork / Heels',
+				'type' => 'soft',
+				'img' => 'floorwork',
+				'orient' => 'square',
+				'desc' => 'Zmysłowy, płynny trening przy podłodze - taniec współczesny, exotic i stretching. Szpilki opcjonalne.',
 				'price' => 'od 35 zł',
 				'tag' => ''
 			],
@@ -306,50 +345,60 @@ class HomeController extends AbstractController
 	{
 		return [
 			'Poniedziałek' => [
-				['time' => '08:00', 'name' => 'Mobilność i rollowanie', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '09:00', 'name' => 'Cardio Dance', 'room' => 'Sala Cream', 'type' => 'soft'],
 				['time' => '16:00', 'name' => 'Aerial Yoga', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-				['time' => '17:00', 'name' => 'Rozciąganie', 'room' => 'Sala Cream', 'type' => 'soft'],
 				['time' => '17:00', 'name' => 'Hamaki technika', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-				['time' => '18:00', 'name' => 'Aerial Hoop Kids', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-				['time' => '19:00', 'name' => 'Aerial Hoop Open', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-			],
-			'Wtorek' => [
-				['time' => '08:00', 'name' => 'Zdrowa postawa', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '09:00', 'name' => 'Wzmacnianie', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '09:00', 'name' => 'Aerial Hoop Basic', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-				['time' => '17:00', 'name' => 'Zajęcia usprawniające', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '18:00', 'name' => 'Cardio stepy', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '19:00', 'name' => 'Aerial Hoop Intermediate', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-			],
-			'Środa' => [
-				['time' => '08:00', 'name' => 'Cardio Dance', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '09:00', 'name' => 'Rozciąganie', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '17:00', 'name' => 'Trening funkcjonalny', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '17:00', 'name' => 'Aerial Hoop Basic', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-				['time' => '18:00', 'name' => 'Siła i core', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '18:00', 'name' => 'Aerial Hoop Choreo', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+				['time' => '17:00', 'name' => 'Pilates na macie', 'room' => 'Sala Cream', 'type' => 'premium'],
+				['time' => '18:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '18:00', 'name' => 'Cardio + Tabata', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '19:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
 				['time' => '19:00', 'name' => 'Mobilność i rollowanie', 'room' => 'Sala Cream', 'type' => 'soft'],
 			],
+			'Wtorek' => [
+				['time' => '16:00', 'name' => 'Aerial Hoop Basic', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+				['time' => '17:00', 'name' => 'Aerial Hoop Kids', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+				['time' => '17:00', 'name' => 'Wzmacnianie', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '18:00', 'name' => 'Aerial Hoop Intermediate', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+				['time' => '18:00', 'name' => 'Zdrowa postawa', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '19:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '19:00', 'name' => 'Floorwork / Heels', 'room' => 'Sala Cream', 'type' => 'soft'],
+			],
+			'Środa' => [
+				['time' => '16:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '16:00', 'name' => 'Rozciąganie', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '17:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '17:00', 'name' => 'Jędrne pośladki', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '18:00', 'name' => 'Aerial Hoop Basic', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+				['time' => '18:00', 'name' => 'Trening funkcjonalny', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '19:00', 'name' => 'Aerial Hoop Open', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+				['time' => '19:00', 'name' => 'Siła i core', 'room' => 'Sala Cream', 'type' => 'soft'],
+			],
 			'Czwartek' => [
-				['time' => '08:00', 'name' => 'Zdrowa postawa', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '08:00', 'name' => 'Aerial Hoop Basic', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-				['time' => '09:00', 'name' => 'Mobilność i rollowanie', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '16:00', 'name' => 'Hamaki technika', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-				['time' => '17:00', 'name' => 'Aerial Yoga', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-				['time' => '17:00', 'name' => 'Pole Dance Intermediate', 'room' => 'Sala Cream', 'type' => 'premium'],
-				['time' => '18:00', 'name' => 'Pole Dance Basic', 'room' => 'Sala Cream', 'type' => 'premium'],
-				['time' => '18:00', 'name' => 'Pilates na macie', 'room' => 'Sala Liliowa', 'type' => 'premium'],
-				['time' => '19:00', 'name' => 'Pole Dance Choreo', 'room' => 'Sala Cream', 'type' => 'premium'],
+				['time' => '16:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '16:00', 'name' => 'Open studio', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '17:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '17:00', 'name' => 'Pilates na macie', 'room' => 'Sala Cream', 'type' => 'premium'],
+				['time' => '18:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '18:00', 'name' => 'Power Stretching', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '19:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '19:00', 'name' => 'Floorwork / Heels', 'room' => 'Sala Cream', 'type' => 'soft'],
 			],
 			'Piątek' => [
-				['time' => '08:00', 'name' => 'Rozciąganie', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '09:00', 'name' => 'Zajęcia usprawniające', 'room' => 'Sala Cream', 'type' => 'soft'],
-				['time' => '17:00', 'name' => 'Pole Dance Basic', 'room' => 'Sala Cream', 'type' => 'premium'],
+				['time' => '16:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '17:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '17:00', 'name' => 'Cardio + Tabata', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '18:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
 				['time' => '18:00', 'name' => 'Mobilność i rollowanie', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '19:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '19:00', 'name' => 'Open studio', 'room' => 'Sala Cream', 'type' => 'soft'],
 			],
 			'Sobota' => [
-				['time' => '10:00', 'name' => 'Pilates na macie', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+				['time' => '11:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '11:00', 'name' => 'Commercial Dance', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '12:00', 'name' => 'Pilates na macie', 'room' => 'Sala Liliowa', 'type' => 'premium'],
+				['time' => '12:00', 'name' => 'Rozciąganie', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '13:00', 'name' => 'Open studio', 'room' => 'Sala Liliowa', 'type' => 'soft'],
+				['time' => '13:00', 'name' => 'Jazz', 'room' => 'Sala Cream', 'type' => 'soft'],
+				['time' => '16:00', 'name' => 'Aerial Jam', 'room' => 'Obie sale', 'type' => 'premium', 'note' => 'co 2 tygodnie', 'from' => new \DateTimeImmutable() < new \DateTimeImmutable(self::AERIAL_JAM_START) ? 'od 12.09' : ''],
 			],
 			'Niedziela' => [],
 		];
@@ -360,7 +409,7 @@ class HomeController extends AbstractController
 		return [
 			'soft' => [
 				'name' => 'Zajęcia SOFT',
-				'description' => 'Mobilność i rollowanie, Rozciąganie, Wzmacnianie, Zdrowa postawa, Siła i core, Cardio Dance, Zajęcia usprawniające, Trening funkcjonalny',
+				'description' => 'Mobilność i rollowanie, Rozciąganie, Wzmacnianie, Zdrowa postawa, Siła i core, Cardio + Tabata, Power Stretching, Trening funkcjonalny',
 				'items' => [
 					['label' => 'Pojedyncze wejście', 'price' => '35 zł'],
 					['label' => 'Karnet 4 wejścia', 'price' => '125 zł'],

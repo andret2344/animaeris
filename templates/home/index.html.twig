@@ -336,9 +336,10 @@
 						<div class="sched-row room-{{ rs }} sched-{{ c.type }}">
 							<span class="sched-time">{{ c.time }}</span>
 							<div class="sched-info">
-								<strong>{{ c.name }}</strong>
+								<strong>{{ c.name }}{% if c.from is defined and c.from %}<span class="sched-from">{{ c.from }}</span>{% endif %}</strong>
 							</div>
 							<div class="sched-meta">
+								{% if c.note is defined %}<span class="sched-badge note">{{ c.note }}</span>{% endif %}
 								<span class="sched-room {{ rs }}">{{ c.room }}</span>
 								<span class="sched-badge {{ c.type }}">{{ c.type == 'premium' ? 'PREMIUM' : 'SOFT' }}</span>
 							</div>
@@ -477,7 +478,7 @@
 				class="g-item"
 				data-ani="up"
 				data-delay="0"><img
-					src="/images/r2.jpg"
+					src="/images/pole-dance-studio.jpg"
 					alt="Animaeris - galeria 1"
 					loading="lazy">
 				<div class="g-overlay"></div>
@@ -486,7 +487,7 @@
 				class="g-item"
 				data-ani="up"
 				data-delay="80"><img
-					src="/images/r3.jpg"
+					src="/images/pole-dance-scena.jpg"
 					alt="Animaeris - galeria 2"
 					loading="lazy">
 				<div class="g-overlay"></div>
@@ -495,7 +496,7 @@
 				class="g-item"
 				data-ani="up"
 				data-delay="160"><img
-					src="/images/r4.jpg"
+					src="/images/aerial-hoop-las.jpg"
 					alt="Animaeris - galeria 3"
 					loading="lazy">
 				<div class="g-overlay"></div>
@@ -504,7 +505,7 @@
 				class="g-item"
 				data-ani="up"
 				data-delay="240"><img
-					src="/images/r5.jpg"
+					src="/images/pole-dance-pokaz.jpg"
 					alt="Animaeris - galeria 4"
 					loading="lazy">
 				<div class="g-overlay"></div>
