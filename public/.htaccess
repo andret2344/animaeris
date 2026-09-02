@@ -2,6 +2,17 @@ DirectoryIndex index.php
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Serve foo.jpg.webp instead of foo.jpg when the browser accepts WebP.
+    # Sidecars are committed, not built - regenerate them after changing any image.
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{REQUEST_FILENAME}.webp -f
+    RewriteRule \.(jpe?g|png)$ %{REQUEST_URI}.webp [T=image/webp,E=WEBP:1,L]
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header append Vary Accept env=REDIRECT_WEBP
 </IfModule>
