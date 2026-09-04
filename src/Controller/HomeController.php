@@ -472,7 +472,7 @@ class HomeController extends AbstractController
 			],
 			[
 				'q' => 'Ile osób jest na zajęciach?',
-				'a' => 'Dbamy o komfort i bezpieczeństwo - grupy są kameralne, maksymalnie 10 osób. Trenerka może poświęcić uwagę każdej osobie.'
+				'a' => 'Dbamy o komfort i bezpieczeństwo - grupy są kameralne, maksymalnie 6 osób. Trenerka może poświęcić uwagę każdej osobie.'
 			],
 			[
 				'q' => 'Czy mogę zorganizować u Was wydarzenie?',
